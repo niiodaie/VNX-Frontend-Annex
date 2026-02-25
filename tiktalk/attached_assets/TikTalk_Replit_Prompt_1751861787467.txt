@@ -1,0 +1,67 @@
+
+🚀 Replit Project Prompt: Build TikTalk MVP — A Modern Podcast Platform
+
+🎯 Project Title:
+TikTalk - The Home of Podcasters and Podcasts
+
+📝 Description:
+Create a fully functional MVP (Minimum Viable Product) for a podcast platform where podcasters can create and manage shows, upload episodes, and where listeners can browse, stream, and follow podcasts.
+
+🎨 Target Audience:
+- Podcasters looking for a simple, powerful platform to share their content
+- Listeners seeking a clean, mobile-friendly podcast discovery and streaming experience
+
+🔧 Core Features (MVP):
+1. Authentication
+   - Sign up / Log in with email & password
+   - Creator profile setup (name, show title, cover image, bio)
+
+2. Podcaster Dashboard
+   - Create podcast show (title, description, category, cover)
+   - Upload episodes (MP3/audio)
+   - Add episode title, notes, cover image, tags
+   - View basic analytics: plays, followers, episode count
+
+3. Public Listener Interface
+   - Homepage feed: Trending, New Episodes, Categories
+   - Podcast Show Page: cover, description, list of episodes
+   - Episode Page: in-browser audio player, share link
+   - Follow/Subscribe to podcasters
+
+4. Audio Hosting
+   - Store and stream MP3 files via Supabase Storage or similar
+   - Generate and expose public RSS feed per podcast
+
+5. Design
+   - Clean, modern UI using Tailwind CSS
+   - Fully responsive and mobile-first
+   - Simple, lightweight audio player (React-based)
+
+🛠️ Stack Suggestions:
+- Frontend: React + Vite + Tailwind CSS
+- Backend: Supabase (Auth, Storage, Postgres DB)
+- Hosting: Vercel (frontend), Supabase/Render (backend if needed)
+
+📂 Folder Structure (Recommended):
+/client      --> React app
+/server      --> API logic if needed
+/public      --> Static assets (logo, cover images)
+/supabase    --> SQL schema + storage setup
+
+📈 Stretch Goals (Phase 2):
+- AI tools for auto-title/summary generation
+- Monetization: listener donations, paid subscriptions
+- Audiogram/video generator for social media
+- Voice-to-podcast converter
+- Commenting system under episodes
+- Analytics dashboard with graphs
+
+📌 Note:
+Make it modular and clean. Focus on working core flows: Create show → Upload episode → Play episode → Follow.
+
+📎 Deliverables:
+- Working live preview
+- Link to GitHub repo
+- Optional: Branding preview (logo + color scheme)
+
+Let’s go BEAST MODE on TikTalk MVP.
