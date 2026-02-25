@@ -1,0 +1,73 @@
+// App.js (React Native Frontend Shell)
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen';
+import ScanScreen from './screens/ScanScreen';
+import ResultScreen from './screens/ResultScreen';
+import SubscriptionScreen from './screens/SubscriptionScreen';
+
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Scan" component={ScanScreen} />
+        <Stack.Screen name="Result" component={ResultScreen} />
+        <Stack.Screen name="Subscription" component={SubscriptionScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+// backend/routes/breathalyzer.js
+const express = require('express');
+const router = express.Router();
+const { evaluateBreathSample } = require('../utils/breathalyzer');
+
+router.post('/scan', async (req, res) => {
+  try {
+    const { userId, audioSample } = req.body;
+    if (!audioSample) return res.status(400).json({ error: 'No breath data provided' });
+
+    const result = await evaluateBreathSample(audioSample);
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Scan failed' });
+  }
+});
+
+module.exports = router;
+
+// backend/utils/breathalyzer.js
+async function evaluateBreathSample(audioSample) {
+  // Placeholder logic — eventually replace with ML model/audio pattern recognition
+  const threshold = 0.6; // simulated BAC threshold
+  const simulatedBAC = Math.random();
+  const level = simulatedBAC > threshold ? 'high' : 'safe';
+  return {
+    bac: simulatedBAC.toFixed(2),
+    level,
+    message: level === 'high' ? 'Warning: High alcohol level detected' : 'Clear: You are good to go'
+  };
+}
+
+module.exports = { evaluateBreathSample };
+
+// backend/server.js
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const breathalyzerRoutes = require('./routes/breathalyzer');
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+app.use('/api/breath', breathalyzerRoutes);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

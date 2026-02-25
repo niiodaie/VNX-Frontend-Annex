@@ -1,0 +1,118 @@
+// App.js (React Native Frontend Shell)
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen';
+import ScanScreen from './screens/ScanScreen';
+import ResultScreen from './screens/ResultScreen';
+import SubscriptionScreen from './screens/SubscriptionScreen';
+import AdBanner from './components/AdBanner';
+import UpsellModal from './components/UpsellModal';
+
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Scan" component={ScanScreen} />
+        <Stack.Screen name="Result" component={ResultScreen} />
+        <Stack.Screen name="Subscription" component={SubscriptionScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+// components/UpsellModal.js
+import React from 'react';
+import { Modal, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+const UpsellModal = ({ visible, onClose }) => {
+  const navigation = useNavigation();
+
+  return (
+    <Modal visible={visible} transparent animationType="slide">
+      <View style={styles.overlay}>
+        <View style={styles.modal}>
+          <Text style={styles.title}>You're Over the Limit</Text>
+          <Text style={styles.message}>Upgrade to BreatheCheck+ for safety alerts, Uber discounts, and AI driving coach.</Text>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Subscription')}>
+            <Text style={styles.buttonText}>Upgrade Now</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onClose}>
+            <Text style={styles.close}>Maybe Later</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Modal>
+  );
+};
+
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  modal: {
+    width: '80%',
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    padding: 20,
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10
+  },
+  message: {
+    fontSize: 16,
+    marginBottom: 20,
+    textAlign: 'center'
+  },
+  button: {
+    backgroundColor: '#007bff',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    marginBottom: 10
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold'
+  },
+  close: {
+    color: 'gray',
+    textDecorationLine: 'underline'
+  }
+});
+
+export default UpsellModal;
+
+// screens/ResultScreen.js (partial logic)
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button } from 'react-native';
+import UpsellModal from '../components/UpsellModal';
+
+export default function ResultScreen({ route }) {
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    if (route.params?.result?.upgradeRecommended) {
+      setShowModal(true);
+    }
+  }, [route.params]);
+
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>BAC: {route.params?.result?.bac}</Text>
+      <Text>Status: {route.params?.result?.message}</Text>
+      <UpsellModal visible={showModal} onClose={() => setShowModal(false)} />
+    </View>
+  );
+}
