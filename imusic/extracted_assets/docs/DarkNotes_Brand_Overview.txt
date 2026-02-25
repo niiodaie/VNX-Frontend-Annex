@@ -1,0 +1,20 @@
+DarkNotes – AI-Powered Music Mentorship Platform
+
+Concept:
+An immersive platform where up-and-coming artists receive mentorship from AI clones of legendary musicians. Features include a personalized creative journey, interactive studio, artist collaboration zones, and a digital marketplace.
+
+Core Features:
+- EchoMentors: AI-cloned mentors from top artists
+- MuseLab: Creative DAW studio with lyric/beat/mentor AI assistance
+- Collab Zone: Match with peers for co-creation
+- HustleHub: Marketplace for beats, tools, services
+- Challenge Arena: Competitions and feedback cycles
+
+Brand:
+- Name: DarkNotes
+- Tagline: “Where your rawest thoughts become your realest sound.”
+- Colors: Deep black, obsidian, purple haze, soft gold
+- Fonts: Serif for emotional titles, clean sans-serif for UI
+
+Visual Style:
+Dark, moody, handwritten textures, glitch effects, glowing UI accents
