@@ -1,0 +1,135 @@
+🧠 AI Mentor Prompts – EchoMentors
+
+Each AI mentor guides users through their unique style and creative process. These prompts can be sent to GPT or any language model to simulate mentorship.
+
+🎧 Kendrick Flow (Inspired by Kendrick Lamar)
+Prompt:
+"As Kendrick Flow, help the user construct a verse using layered metaphors that speak to inner conflict, with rhythmic complexity and social commentary."
+
+🎧 Nova Rae (Inspired by SZA)
+Prompt:
+"As Nova Rae, guide the artist in creating poetic, emotionally vulnerable lyrics with subtle harmonies. Focus on themes of love, detachment, and identity."
+
+🎧 MetroDeep (Inspired by Metro Boomin)
+Prompt:
+"As MetroDeep, suggest a dark trap-style beat structure. Provide kick patterns, hi-hat rolls, and eerie sound textures."
+
+🎧 Blaze420 (Inspired by Travis Scott)
+Prompt:
+"As Blaze420, assist in crafting a psychedelic hook with auto-tuned vocal textures and layered ad-libs over ambient 808s."
+
+🎧 IvyMuse (Inspired by Beyoncé)
+Prompt:
+"As IvyMuse, empower the user to write a bold anthem about self-worth, with call-and-response structure and vocal performance guidance."
+
+—
+
+🌌 Muse Creative Journey Template – SoulTrap Explorer
+
+A 5-stage journey that takes a new artist from spark to collab.
+
+🎵 Stage 1: Inspiration Spark
+
+Task: Choose a theme (e.g., heartbreak, triumph, hunger)
+
+Prompt: "What’s a moment in your life that changed you forever?"
+
+Tool: SparkShots AI
+
+🎵 Stage 2: Lyric Lab
+
+Task: Write 8 bars with mentor’s help
+
+Tool: AI EchoMentor + SmartLyric assist
+
+🎵 Stage 3: Beat Assembly
+
+Task: Build a beat using MuseLab tools
+
+Tool: Drag-and-drop DAW or prompt-based beat generator
+
+🎵 Stage 4: Demo Session
+
+Task: Record 1-minute demo, upload for feedback
+
+Feedback: EchoMentor listens + sends suggestions
+
+🎵 Stage 5: Public Drop or Collab
+
+Option A: Publish to your profile
+
+Option B: Invite another artist to remix your track in the Collab Zone
+
+—
+
+📊 Pitch Deck Outline – DarkNotes
+
+Slide 1: Cover Slide
+
+Logo + Tagline: “Where your rawest thoughts become your realest sound.”
+
+Slide 2: Problem
+
+Millions of creators lack affordable, tailored mentorship
+
+Fragmented tools → inspiration lost
+
+Slide 3: Solution
+
+AI-driven music platform with cloned artist mentors
+
+Personal creative journeys, community, and monetization
+
+Slide 4: Product
+
+Choose a mentor → guided journey → MuseLab studio → Collab Zone
+
+Features: lyric AI, beat builder, voice tools, feedback loops
+
+Slide 5: Market
+
+150M+ global creators (indie musicians, TikTokers, bedroom producers)
+
+Gen-Z and Gen Alpha looking for personalized creative tools
+
+Slide 6: Business Model
+
+Freemium + Pro tiers
+
+In-app purchases (AI tools, loops, collab credits)
+
+10–15% cut from HustleHub marketplace
+
+Slide 7: Vision
+
+Democratize musical mentorship
+
+Empower voices that don’t fit the mainstream
+
+Slide 8: Team
+
+You (Founder) + AI/UX specialists (contract or partner options)
+
+Slide 9: Ask
+
+Seed funding, community beta testers, early artist partnerships
+
+—
+
+🎨 Suggested Screen Mockups
+
+Landing Page — “Choose Your Muse” CTA
+
+Mentor Selector — swipe cards or carousel
+
+MuseLab — lyric + beat interface
+
+Collab Zone — chat, share tracks, AI mediator
+
+HustleHub Marketplace — loop packs, services
+
+Profile — badges, mentor progress, track history
+
+Mobile view — essential tools, voice notes, drop-in challenges
+
+—

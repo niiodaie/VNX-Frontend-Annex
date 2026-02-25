@@ -1,0 +1,130 @@
+import React, { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { UploadCloud, Play, Send } from 'lucide-react';
+import { useDropzone } from 'react-dropzone';
+
+const MuseLab = () => {
+  const [lyrics, setLyrics] = useState('');
+  const [hook, setHook] = useState('');
+  const [beat, setBeat] = useState(null);
+  const [mentorResponse, setMentorResponse] = useState('');
+  const [sending, setSending] = useState(false);
+
+  const handleLyricsChange = (e) => setLyrics(e.target.value);
+
+  const onDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setBeat(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: { 'audio/*': [] },
+    onDrop
+  });
+
+  const handleGenerateHook = async () => {
+    setHook('Generating...');
+    const response = await fetch('/api/generate-hook', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lyrics }),
+    });
+    const data = await response.json();
+    setHook(data.hook || 'No hook generated');
+  };
+
+  const handleSendToMentor = async () => {
+    setSending(true);
+    const response = await fetch('/api/send-to-mentor', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lyrics }),
+    });
+    const data = await response.json();
+    setMentorResponse(data.message || 'No feedback received');
+    setSending(false);
+  };
+
+  return (
+    <div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <Card className="col-span-2 p-4">
+        <h2 className="text-xl font-bold mb-2">📝 Lyric Workspace</h2>
+        <Textarea
+          rows={14}
+          placeholder="Write your verse, chorus, or hook..."
+          value={lyrics}
+          onChange={handleLyricsChange}
+        />
+        <div className="mt-4 flex gap-2">
+          <Button onClick={handleGenerateHook}>Generate Hook</Button>
+          <Button onClick={handleSendToMentor} disabled={sending}>
+            <Send className="w-4 h-4 mr-1" /> Send to Mentor
+          </Button>
+        </div>
+        {hook && (
+          <div className="mt-4">
+            <h3 className="font-semibold">🎶 Hook Suggestion:</h3>
+            <p>{hook}</p>
+          </div>
+        )}
+        {mentorResponse && (
+          <div className="mt-4 p-2 bg-muted rounded">
+            <h3 className="font-semibold">🧠 Mentor Says:</h3>
+            <p>{mentorResponse}</p>
+          </div>
+        )}
+      </Card>
+
+      <Card className="p-4 flex flex-col items-center justify-start">
+        <h2 className="text-xl font-bold mb-2">🎧 Beat Dock</h2>
+        <div
+          {...getRootProps()}
+          className="w-full p-4 border-2 border-dashed border-gray-300 rounded cursor-pointer text-center"
+        >
+          <input {...getInputProps()} />
+          <UploadCloud className="mx-auto mb-2 h-6 w-6" />
+          <p>Drag & drop your beat file here, or click to select</p>
+        </div>
+        {beat && (
+          <div className="mt-4 w-full">
+            <audio controls src={beat} className="w-full mt-2" />
+          </div>
+        )}
+      </Card>
+    </div>
+  );
+};
+
+export default MuseLab;
+
+// -----------------------------
+// Backend Endpoints (Next.js API Routes or Express)
+// -----------------------------
+
+// /api/generate-hook.js
+export async function generateHookHandler(req, res) {
+  const { lyrics } = JSON.parse(req.body);
+  const prompt = `Create a catchy hook based on these lyrics:\n"${lyrics}"`;
+
+  // Call to GPT or AI API
+  const hook = `🎤 Auto-generated hook for: "${lyrics}"`;
+  res.status(200).json({ hook });
+}
+
+// /api/send-to-mentor.js
+export async function sendToMentorHandler(req, res) {
+  const { lyrics } = JSON.parse(req.body);
+  const prompt = `As a rap mentor, review the following lyrics:\n"${lyrics}"`;
+
+  // Call to GPT or AI API
+  const message = `🧠 Mentor Feedback: This verse has great rhythm, consider adding a metaphor in the second line.`;
+  res.status(200).json({ message });
+}
