@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VNX Nexus - Digital Innovation Hub</title>
+    <meta name="description" content="VNX Nexus - A global digital innovation hub featuring AI tools, platforms, and resources for creators and innovators worldwide.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: '#eff6ff',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                900: '#1e3a8a'
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-white">
+    <div id="root">
+      <!-- Navigation -->
+      <nav class="bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+              <div class="flex items-center">
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-3 shadow-md">
+                  <span class="text-white font-bold text-lg">V</span>
+                </div>
+                <span class="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Visnec Nexus</span>
+              </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+              <a href="#tools" class="text-gray-700 hover:text-blue-600 text-sm font-medium transition-colors">Tools</a>
+              <a href="#platforms" class="text-gray-700 hover:text-blue-600 text-sm font-medium transition-colors">Platforms</a>
+              <a href="#community" class="text-gray-700 hover:text-blue-600 text-sm font-medium transition-colors">Community</a>
+              <a href="#experience" class="text-gray-700 hover:text-blue-600 text-sm font-medium transition-colors">Experience</a>
+              <button class="text-gray-700 hover:text-blue-600 text-sm font-medium transition-colors">Sign In</button>
+              <button class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Get Started</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section class="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 flex items-center overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-indigo-600/20"></div>
+          <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full filter blur-3xl animate-pulse"></div>
+          <div class="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 2s"></div>
+          <div class="absolute bottom-1/4 left-1/2 w-96 h-96 bg-indigo-500/30 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 4s"></div>
+        </div>
+
+        <!-- Grid Pattern Overlay -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+          <div class="text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-8">
+              <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+              Now Available - Next Generation Platform
+            </div>
+
+            <!-- Main heading -->
+            <div class="mb-8">
+              <h1 class="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
+                <span class="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
+                  The Future of
+                </span>
+                <br />
+                <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+                  Digital Innovation
+                </span>
+              </h1>
+            </div>
+            
+            <!-- Subtitle -->
+            <p class="text-xl md:text-2xl text-gray-300 font-normal mb-12 max-w-4xl mx-auto leading-relaxed">
+              Unlock the power of AI-driven tools, cutting-edge platforms, and immersive experiences. Join 50,000+ innovators shaping tomorrow's digital landscape.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-16">
+              <button class="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-5 rounded-2xl transition-all duration-300 font-bold text-lg shadow-2xl hover:shadow-blue-500/50 transform hover:-translate-y-2 hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                <div class="relative flex items-center justify-center">
+                  <svg class="w-6 h-6 mr-3 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                  </svg>
+                  Explore Tools
+                </div>
+              </button>
+              
+              <button class="group relative bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-10 py-5 rounded-2xl transition-all duration-300 font-bold text-lg shadow-2xl border border-white/20 hover:border-white/40 transform hover:-translate-y-2 hover:scale-105">
+                <div class="relative flex items-center justify-center">
+                  <svg class="w-6 h-6 mr-3 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                  </svg>
+                  Visit Platforms
+                </div>
+              </button>
+
+              <button class="group relative bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-10 py-5 rounded-2xl transition-all duration-300 font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transform hover:-translate-y-2 hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                <div class="relative flex items-center justify-center">
+                  <svg class="w-6 h-6 mr-3 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                  Discover Experiences
+                </div>
+              </button>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mb-16">
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">50K+</div>
+                <div class="text-sm text-gray-300 font-medium">Global Innovators</div>
+              </div>
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">500+</div>
+                <div class="text-sm text-gray-300 font-medium">AI-Powered Tools</div>
+              </div>
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">99.9%</div>
+                <div class="text-sm text-gray-300 font-medium">Platform Uptime</div>
+              </div>
+              <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">24/7</div>
+                <div class="text-sm text-gray-300 font-medium">Expert Support</div>
+              </div>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="flex flex-col items-center">
+              <p class="text-gray-400 text-sm mb-4">Trusted by industry leaders</p>
+              <div class="flex items-center space-x-8 opacity-60">
+                <div class="text-white font-bold text-lg">Microsoft</div>
+                <div class="text-white font-bold text-lg">Google</div>
+                <div class="text-white font-bold text-lg">Amazon</div>
+                <div class="text-white font-bold text-lg">OpenAI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trending Section -->
+      <section class="py-16 bg-gray-50" id="trending">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+              <span class="text-orange-500 mr-2">🔥</span>
+              Trending Now
+            </h2>
+            <p class="text-gray-600 max-w-3xl mx-auto">
+              Discover the hottest tools, platforms, and discussions shaping the digital landscape.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- VNX-NetScan -->
+            <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                  <span class="text-2xl">🔍</span>
+                </div>
+                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full font-medium">New</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2 text-gray-900">VNX-NetScan</h3>
+              <p class="text-gray-600 text-sm mb-4">Run IP, WHoiS, Port scans and Traceroutes.</p>
+              <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                Try Now
+              </button>
+            </div>
+
+            <!-- VNX-Surprise -->
+            <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                  <span class="text-2xl">🎁</span>
+                </div>
+                <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full font-medium">Hot</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2 text-gray-900">VNX-Surprise</h3>
+              <p class="text-gray-600 text-sm mb-4">Get surprise ideas with tags and affiliate links.</p>
+              <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                Try Now
+              </button>
+            </div>
+
+            <!-- VNX-Explorer -->
+            <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <span class="text-2xl">🌍</span>
+                </div>
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">Popular</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-2 text-gray-900">VNX-Explorer</h3>
+              <p class="text-gray-600 text-sm mb-4">Discover global wonders, events and food culture.</p>
+              <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                Try Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Explore Our Pillars -->
+      <section class="py-16 bg-white" id="pillars">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+              <span class="text-orange-500 mr-2">🧩</span>
+              Explore Our Pillars
+            </h2>
+            <p class="text-gray-600 max-w-3xl mx-auto">
+              Eight comprehensive categories designed to accelerate your digital journey and unlock new possibilities.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Tools -->
+            <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow border border-gray-100 text-center">
+              <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">🔧</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-3 text-gray-900">Tools</h3>
+              <p class="text-gray-600 text-sm">Handy utilities that solve real-world problems.</p>
+            </div>
+
+            <!-- Platforms -->
+            <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow border border-gray-100 text-center">
+              <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">🌿</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-3 text-gray-900">Platforms</h3>
+              <p class="text-gray-600 text-sm">Interactive launchpads and service layers.</p>
+            </div>
+
+            <!-- Directories -->
+            <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow border border-gray-100 text-center">
+              <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">📚</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-3 text-gray-900">Directories</h3>
+              <p class="text-gray-600 text-sm">Discover niche resources by category.</p>
+            </div>
+
+            <!-- Resources -->
+            <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow border border-gray-100 text-center">
+              <div class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">📁</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-3 text-gray-900">Resources</h3>
+              <p class="text-gray-600 text-sm">Templates, guides, and downloadable kits.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section -->
+      <section class="py-20 bg-gradient-to-r from-primary-900 to-indigo-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Digital Journey?</h2>
+          <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+            Join thousands of innovators who are already building the future with VNX Nexus
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <button class="bg-white text-primary-900 px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors font-semibold text-lg shadow-lg">
+              Start Your Journey
+            </button>
+            <button class="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-primary-900 transition-colors font-semibold text-lg">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold mb-4">VNX Nexus</h3>
+              <p class="text-gray-300 text-sm">
+                Empowering digital innovation through comprehensive tools and platforms.
+              </p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Platform</h4>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li><a href="#" class="hover:text-white">Tools</a></li>
+                <li><a href="#" class="hover:text-white">Platforms</a></li>
+                <li><a href="#" class="hover:text-white">Resources</a></li>
+                <li><a href="#" class="hover:text-white">Community</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Support</h4>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li><a href="#" class="hover:text-white">Documentation</a></li>
+                <li><a href="#" class="hover:text-white">Help Center</a></li>
+                <li><a href="#" class="hover:text-white">Contact</a></li>
+                <li><a href="#" class="hover:text-white">Status</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Connect</h4>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li><a href="#" class="hover:text-white">Twitter</a></li>
+                <li><a href="#" class="hover:text-white">LinkedIn</a></li>
+                <li><a href="#" class="hover:text-white">GitHub</a></li>
+                <li><a href="#" class="hover:text-white">Discord</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p class="text-gray-300 text-sm">
+              Made with ❤️ by Visnec Nexus
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Add smooth scrolling and basic interactivity -->
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Add hover effects to cards
+      document.querySelectorAll('.hover\\:shadow-lg, .hover\\:shadow-md').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-2px)';
+          this.style.transition = 'transform 0.2s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+
+      // Add click handlers for CTA buttons
+      document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', function() {
+          const text = this.textContent.trim();
+          if (text.includes('Explore Tools')) {
+            document.querySelector('#pillars').scrollIntoView({ behavior: 'smooth' });
+          } else if (text.includes('Visit Platforms')) {
+            document.querySelector('#trending').scrollIntoView({ behavior: 'smooth' });
+          } else if (text.includes('Discover Experiences')) {
+            document.querySelector('#pillars').scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

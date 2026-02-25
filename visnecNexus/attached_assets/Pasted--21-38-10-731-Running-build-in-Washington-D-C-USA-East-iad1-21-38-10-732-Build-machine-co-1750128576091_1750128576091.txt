@@ -1,0 +1,34 @@
+[21:38:10.731] Running build in Washington, D.C., USA (East) – iad1
+[21:38:10.732] Build machine configuration: 4 cores, 8 GB
+[21:38:10.744] Cloning github.com/niiodaie/vnx-main-frontend (Branch: main, Commit: 3abc0a8)
+[21:38:10.751] Skipping build cache, deployment was triggered without cache.
+[21:38:10.993] Cloning completed: 249.000ms
+[21:38:11.339] Running "vercel build"
+[21:38:11.827] Vercel CLI 42.2.0
+[21:38:12.709] Installing dependencies...
+[21:38:43.564] 
+[21:38:43.564] added 337 packages in 31s
+[21:38:43.564] 
+[21:38:43.565] 48 packages are looking for funding
+[21:38:43.565]   run `npm fund` for details
+[21:38:43.638] Running "npm run build"
+[21:38:43.758] 
+[21:38:43.759] > vnx-frontend@1.0.0 build
+[21:38:43.759] > tsc && vite build
+[21:38:43.759] 
+[21:38:49.874] src/App.tsx(1,46): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.875] src/components/navigation.tsx(2,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.875] src/components/pillars-section.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.875] src/pages/community/index.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.875] src/pages/directories/index.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.875] src/pages/experiences/index.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.875] src/pages/insights/index.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.875] src/pages/marketplace/index.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.875] src/pages/platforms/index.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.876] src/pages/resources/index.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.876] src/pages/tools/index.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.876] src/pages/trends/index.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.876] src/pages/ventures/index.tsx(1,22): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+[21:38:49.906] Error: Command "npm run build" exited with 2
+[21:38:50.402] 
+[21:38:53.328] Exiting build container
