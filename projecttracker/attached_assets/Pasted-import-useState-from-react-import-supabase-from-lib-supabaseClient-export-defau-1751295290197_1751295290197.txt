@@ -1,0 +1,71 @@
+import { useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+
+export default function InviteUser() {
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("user");
+  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleInvite = async () => {
+    if (!email.trim()) {
+      setStatus("Please enter a valid email address.");
+      return;
+    }
+    setLoading(true);
+    setStatus("");
+
+    const displayName = email.split("@")[0];
+
+    const { error } = await supabase.from("profiles").insert({
+      id: crypto.randomUUID(),
+      display_name: displayName,
+      role,
+    });
+
+    if (error) {
+      console.error("Invite failed:", error);
+      setStatus("❌ Failed to invite user. They may already exist.");
+    } else {
+      setStatus("✅ Invitation created successfully!");
+      setEmail("");
+      setRole("user");
+    }
+    setLoading(false);
+  };
+
+  return (
+    <div className="max-w-xl mx-auto p-6 bg-white shadow rounded-lg mt-6">
+      <h2 className="text-xl font-bold mb-4">Invite New User</h2>
+
+      <input
+        type="email"
+        placeholder="Email address"
+        className="w-full mb-3 p-2 border rounded"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <select
+        className="w-full mb-3 p-2 border rounded"
+        value={role}
+        onChange={(e) => setRole(e.target.value)}
+      >
+        <option value="user">User</option>
+        <option value="moderator">Moderator</option>
+        <option value="admin">Admin</option>
+        <option value="super_admin">Super Admin</option>
+      </select>
+
+      <button
+        onClick={handleInvite}
+        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        disabled={loading}
+      >
+        {loading ? "Inviting..." : "Send Invite"}
+      </button>
+
+      {status && <p className="mt-3 text-sm text-gray-700">{status}</p>}
+    </div>
+  );
+}

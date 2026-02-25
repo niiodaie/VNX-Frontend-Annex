@@ -1,0 +1,142 @@
+Create a full-stack web app called Nexus Tracker for simplified project management — designed for solopreneurs and small businesses. This tool should help users manage:
+
+✅ Projects & task boards
+
+✅ To-do lists
+
+✅ Reminders
+
+✅ Linked AI prompts
+
+✨ Target Outcome:
+A clean, efficient, mobile-first platform — inspired by Asana and Monday.com, but simplified and built with a strong AI memory layer that lets users save, retrieve, and reuse previous AI interactions.
+
+It should include polished UI/UX and default branding for the VNX ecosystem.
+
+🔧 Tech Stack Requirements:
+Frontend:
+
+React (Vite scaffold)
+
+TailwindCSS
+
+Mobile-first responsive layout
+
+Clean UI with board view, to-do list, and prompt history tabs
+
+Backend:
+
+Supabase (for auth, DB, storage) — integrated from the start
+
+Use local fallback in dev if Supabase is not configured
+
+AI Layer:
+
+OpenAI API integration
+
+AI helper sidebar for task suggestions, content generation, etc.
+
+Prompt history stored per project/task
+
+Hosting:
+
+Target Replit deployment for full-stack hosting
+
+Ensure all environment variables (API keys, Supabase URL) are clearly marked in .env
+
+🗂️ File & Folder Structure:
+arduino
+Copy
+Edit
+nexus-tracker/
+├── public/
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   ├── ProjectBoard.jsx
+│   │   ├── TaskCard.jsx
+│   │   ├── ReminderBar.jsx
+│   │   ├── AIHelper.jsx
+│   │   └── Layout.jsx
+│   ├── pages/
+│   │   ├── Dashboard.jsx
+│   │   └── ProjectView.jsx
+│   ├── services/
+│   │   ├── supabaseClient.js
+│   │   ├── aiService.js
+│   ├── utils/
+│   │   ├── dateHelpers.js
+│   │   └── projectData.js
+│   ├── App.jsx
+│   └── main.jsx
+├── .env.example
+├── tailwind.config.js
+├── postcss.config.js
+├── vite.config.js
+├── package.json
+└── README.md
+🎨 Design & UX (VNX Defaults)
+Default font: Inter or Poppins
+
+Rounded buttons and task cards
+
+Responsive grid layout with fallback for mobile view
+
+Sticky reminder bar at top: shows today’s tasks and upcoming deadlines
+
+Use light theme with accent color in the VNX blue/teal range
+
+Logo placeholder (VNX or Nexus Tracker) in top-left
+
+Clean footer: “Built with 💡 by Visnec Nexus”
+
+🧠 AI Prompt History Features:
+Sidebar with input for new prompts
+
+Save all prompts and responses in Supabase under current project/task
+
+Allow user to search and recall past prompts
+
+Allow AI responses to be reused or turned into subtasks or notes
+
+🔁 Reminders & Sync:
+Daily reminder logic (local + Supabase-stored)
+
+Reminder bar with quick-view: “You have 2 tasks due today”
+
+Add browser Notification API support (optional, fallback to UI badge)
+
+📌 Additional Notes for Stability (based on past issues):
+Ensure .env includes default fallbacks for development (e.g., mock Supabase keys if none provided)
+
+Avoid hardcoding API keys — keep them in .env.example
+
+Don’t use external Tailwind CDN — install via PostCSS
+
+Set build script in package.json to:
+
+json
+Copy
+Edit
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview"
+}
+Ensure favicon is added in public/ and referenced in index.html
+
+Structure UI into components early to avoid messy index files
+
+✅ Optional Enhancements (Phase 2):
+Multi-user support (invite by email)
+
+Drag-and-drop task reordering
+
+Calendar or Gantt view
+
+Slack/email notifications
+
+Export project summary to PDF or markdown
+
+AI auto-summarize projects weekly
+

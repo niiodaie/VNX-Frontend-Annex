@@ -1,0 +1,91 @@
+here’s a full working setup for restricting admin routes based on user role (admin or superadmin) using Supabase and React.
+
+🧩 1. useUserRole.ts — Custom Hook
+tsx
+Copy
+Edit
+// hooks/useUserRole.ts
+import { useEffect, useState } from "react";
+import { useUser } from "@supabase/auth-helpers-react";
+import { supabase } from "../utils/supabaseClient";
+
+export default function useUserRole() {
+  const user = useUser();
+  const [role, setRole] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", user.id)
+        .single();
+
+      if (error) {
+        console.error("Error fetching role:", error.message);
+        setRole(null);
+      } else {
+        setRole(data.role);
+      }
+
+      setLoading(false);
+    };
+
+    fetchRole();
+  }, [user]);
+
+  return { role, loading };
+}
+🛡️ 2. AdminRoute.tsx — Protected Route Wrapper
+tsx
+Copy
+Edit
+// components/AdminRoute.tsx
+import React from "react";
+import { Navigate } from "react-router-dom";
+import useUserRole from "../hooks/useUserRole";
+
+const AdminRoute = ({ children }: { children: JSX.Element }) => {
+  const { role, loading } = useUserRole();
+
+  if (loading) return <div>Loading...</div>;
+
+  if (role !== "admin" && role !== "superadmin") {
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+};
+
+export default AdminRoute;
+🧭 3. Usage in App.tsx or your Routes.tsx
+tsx
+Copy
+Edit
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AdminRoute from "./components/AdminRoute";
+import AdminDashboard from "./pages/AdminDashboard";
+import Home from "./pages/Home";
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        
+        {/* Protected Admin Route */}
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+      </Routes>
+    </Router>
+  );
+}

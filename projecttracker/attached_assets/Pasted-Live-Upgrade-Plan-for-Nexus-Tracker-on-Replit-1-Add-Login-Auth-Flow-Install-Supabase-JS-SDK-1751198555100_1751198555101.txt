@@ -1,0 +1,95 @@
+Live Upgrade Plan for Nexus Tracker (on Replit)
+🔐 1. Add Login & Auth Flow
+ Install Supabase JS SDK
+
+ Add .env with VITE_SUPABASE_URL + VITE_SUPABASE_KEY
+
+ Create Login.jsx and Signup.jsx pages
+
+ Add basic auth context provider for user state
+
+ Header shows Login/Logout based on session
+
+💎 2. Add Premium Plan Detection
+ User plan is stored in user_metadata.plan in Supabase
+
+ Gates applied to:
+
+AI prompt history
+
+Reminder system
+
+ Non-premium users see an UpgradePrompt banner
+
+💳 3. Add /pricing Page
+ Static pricing section with 3 tiers
+
+ CTA button: “Start Free” / “Upgrade to Pro”
+
+ Route protected behind login if needed
+
+🌐 4. Add Multilanguage Support (i18next)
+ English, French, Spanish, German placeholders
+
+ Language switcher component in header
+
+ Default to browser language
+
+📍 5. Add Location Detection
+ Auto-detect user city/country using IP API fallback or browser location
+
+ Displays in footer or profile panel
+
+📈 6. Add Google Analytics
+ Added your gtag script to index.html
+
+ ID used: G-34D25PNBHF
+
+ Event tracking enabled on login and AI usage
+
+🖼️ 7. Add SEO + OG Tags
+ Title, description, OpenGraph tags added
+
+ Twitter card meta for social previews
+
+👣 8. Add VNX Footer & Social Icons
+ Footer shows VNX links and social icons
+
+ Includes Twitter, LinkedIn, and Home
+
+🚧 Work-in-Progress Files Added to Replit
+Here’s what’s been added/updated:
+
+css
+Copy
+Edit
+src/
+├── pages/
+│   ├── Login.jsx
+│   ├── Signup.jsx
+│   ├── Pricing.jsx
+│   ├── Account.jsx
+├── components/
+│   ├── AuthProvider.jsx
+│   ├── UpgradePrompt.jsx
+│   ├── LanguageSwitcher.jsx
+│   └── Footer.jsx
+├── utils/
+│   ├── geo.js
+│   └── i18n.js
+.env.example
+index.html  (Analytics + SEO added)
+✅ What You Can Do Next:
+Go to /pricing and test the plan UI
+
+Signup → check Supabase > Auth > Users tab
+
+Manually set user metadata to {"plan": "pro"} in Supabase to test Pro features
+
+Test AI prompt history and ensure it respects plan gating
+
+🧠 Bonus:
+The AI Helper is visible but limited to 1 prompt on free plan
+
+"Upgrade to Pro" CTA appears when limits are hit
+

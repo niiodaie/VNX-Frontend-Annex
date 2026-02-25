@@ -1,0 +1,109 @@
+Admin Panel – Key Features for Super Admin
+Feature	Description
+👥 User Management	List all users, view their roles (free, pro, admin)
+🧠 Subscription Controls	Upgrade/downgrade users between Free & Pro
+📊 Usage Logs (optional)	View prompt/AI tracker usage (for Pro users)
+⚙️ System Settings	Set global announcements, toggle features
+🔐 Access Control	Only visible if logged-in user has role: admin or is_admin: true
+
+🛠️ Step-by-Step Implementation Plan
+1. ✅ Supabase Setup (Table: user_profiles)
+Add admin field:
+
+sql
+Copy
+Edit
+alter table user_profiles add column if not exists is_admin boolean default false;
+2. ✅ Protect Route
+Create /admin route and show panel only if is_admin === true.
+
+jsx
+Copy
+Edit
+// pages/AdminPanel.jsx
+import { useEffect, useState } from 'react'
+import { supabase } from '../supabaseClient'
+import { useNavigate } from 'react-router-dom'
+
+export default function AdminPanel() {
+  const [user, setUser] = useState(null)
+  const [users, setUsers] = useState([])
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      const { data: profile } = await supabase
+        .from('user_profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single()
+
+      if (!profile?.is_admin) {
+        return navigate('/dashboard')
+      }
+      setUser(user)
+      fetchUsers()
+    })
+  }, [])
+
+  const fetchUsers = async () => {
+    const { data, error } = await supabase.from('user_profiles').select('*')
+    if (data) setUsers(data)
+  }
+
+  const updateUser = async (id, newSubscription) => {
+    await supabase.from('user_profiles').update({ subscription: newSubscription }).eq('id', id)
+    fetchUsers()
+  }
+
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
+      <table className="w-full border">
+        <thead>
+          <tr className="bg-gray-100 text-left">
+            <th className="p-2">User ID</th>
+            <th className="p-2">Subscription</th>
+            <th className="p-2">Admin?</th>
+            <th className="p-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(u => (
+            <tr key={u.id} className="border-t">
+              <td className="p-2">{u.id.slice(0, 6)}...</td>
+              <td className="p-2">{u.subscription}</td>
+              <td className="p-2">{u.is_admin ? '✅' : '❌'}</td>
+              <td className="p-2 space-x-2">
+                <button className="bg-blue-500 text-white px-2 py-1 text-sm rounded" onClick={() => updateUser(u.id, 'pro')}>Set Pro</button>
+                <button className="bg-gray-500 text-white px-2 py-1 text-sm rounded" onClick={() => updateUser(u.id, 'free')}>Set Free</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+✅ Route Setup in App.jsx
+jsx
+Copy
+Edit
+import AdminPanel from './pages/AdminPanel'
+
+<Routes>
+  <Route path="/admin" element={<AdminPanel />} />
+</Routes>
+🧪 Test Instructions
+Log in as admin
+
+Visit /admin
+
+Ensure:
+
+Only admins can view the page
+
+You can upgrade/downgrade subscriptions
+
+Data auto-refreshes on change
+

@@ -1,0 +1,150 @@
+Here is the full InviteUser.tsx component — it allows a super admin to invite new users via email.
+
+✅ InviteUser.tsx
+tsx
+Copy
+Edit
+import { useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+
+export default function InviteUser() {
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("member");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const roles = ["admin", "member", "viewer"];
+
+  async function sendInvite() {
+    if (!email) return setMessage("Email is required.");
+
+    setLoading(true);
+    setMessage("");
+
+    const { data, error } = await supabase.auth.admin.inviteUserByEmail(email);
+
+    if (error) {
+      setMessage("Invite failed: " + error.message);
+    } else {
+      // Create user profile record in parallel
+      await supabase.from("profiles").insert([
+        {
+          id: data?.user?.id, // This may be undefined immediately
+          email,
+          role,
+        },
+      ]);
+
+      setMessage(`Invite sent to ${email} with role ${role}.`);
+      setEmail("");
+    }
+
+    setLoading(false);
+  }
+
+  return (
+    <div className="max-w-xl mx-auto mt-10 p-6 bg-white shadow-md rounded">
+      <h2 className="text-2xl font-bold mb-4">Invite New User</h2>
+
+      <input
+        type="email"
+        placeholder="Email address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="w-full mb-4 p-2 border rounded"
+      />
+
+      <select
+        value={role}
+        onChange={(e) => setRole(e.target.value)}
+        className="w-full mb-4 p-2 border rounded"
+      >
+        {roles.map((r) => (
+          <option key={r} value={r}>
+            {r.charAt(0).toUpperCase() + r.slice(1)}
+          </option>
+        ))}
+      </select>
+
+      <button
+        onClick={sendInvite}
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+      >
+        {loading ? "Sending..." : "Send Invite"}
+      </button>
+
+      {message && <p className="mt-4 text-sm text-gray-700">{message}</p>}
+    </div>
+  );
+}
+✅ Requirements
+Supabase must have email invites enabled under the auth.admin.inviteUserByEmail() method.
+
+You should manually assign user_metadata.role on signup or insert a profile record into your profiles table after invite.
+
+Would you like the AssignRole.tsx next? It will allow changing an existing user's role.
+
+
+
+
+
+
+You said:
+
+yes also when user welcome should hos first name
+
+ChatGPT said:
+Great catch! To display the user's first name (or display name) in the welcome message instead of just "there!", you'll want to:
+
+✅ Step 1: Fetch and store user profile
+Make sure you're fetching the user's profile from Supabase after login:
+
+ts
+Copy
+Edit
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+
+export default function DashboardHeader() {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    async function fetchProfile() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("display_name")
+          .eq("id", user.id)
+          .single();
+
+        if (profile?.display_name) {
+          setName(profile.display_name);
+        }
+      }
+    }
+
+    fetchProfile();
+  }, []);
+
+  return (
+    <div className="mt-6 mb-4">
+      <h1 className="text-2xl font-bold">Welcome back, {name || "there"}!</h1>
+      <p className="text-sm text-gray-500">Here's what's happening with your projects today.</p>
+    </div>
+  );
+}
+✅ Step 2: Make sure display_name exists in your profiles table
+If you're using a trigger like:
+
+sql
+Copy
+Edit
+split_part(new.email, '@', 1)
+Then the default display_name will be the part before the "@" in their email — like judeodai from judeodai@gmail.com.
+
+You can later let users edit this value in their profile settings if you want full na

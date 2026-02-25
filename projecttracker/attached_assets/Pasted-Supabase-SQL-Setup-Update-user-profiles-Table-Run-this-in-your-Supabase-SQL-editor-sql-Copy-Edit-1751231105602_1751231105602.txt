@@ -1,0 +1,144 @@
+Supabase SQL Setup – Update user_profiles Table
+Run this in your Supabase SQL editor:
+
+sql
+Copy
+Edit
+alter table user_profiles
+add column if not exists is_admin boolean default false;
+This adds an is_admin flag that determines which users can access the Admin Panel.
+
+2️⃣ AdminPanel.jsx – New Admin Page
+Create this under src/pages/AdminPanel.jsx:
+
+jsx
+Copy
+Edit
+import { useEffect, useState } from 'react'
+import { supabase } from '../supabaseClient'
+import { useNavigate } from 'react-router-dom'
+
+export default function AdminPanel() {
+  const [users, setUsers] = useState([])
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      const { data: profile } = await supabase
+        .from('user_profiles')
+        .select('subscription,is_admin')
+        .eq('id', user.id)
+        .single()
+
+      if (!profile?.is_admin) navigate('/dashboard')
+      else loadUsers()
+    })
+  }, [])
+
+  const loadUsers = async () => {
+    const { data } = await supabase
+      .from('user_profiles')
+      .select('id,subscription,is_admin,created_at')
+    setUsers(data || [])
+  }
+
+  const changePlan = async (id, sub) => {
+    await supabase
+      .from('user_profiles')
+      .update({ subscription: sub })
+      .eq('id', id)
+    loadUsers()
+  }
+
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
+      <table className="min-w-full border">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="p-2">User ID</th>
+            <th className="p-2">Subscription</th>
+            <th className="p-2">Admin?</th>
+            <th className="p-2">Joined</th>
+            <th className="p-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(u => (
+            <tr key={u.id} className="border-t">
+              <td className="p-2 font-mono text-sm">{u.id.substring(0,8)}…</td>
+              <td className="p-2">{u.subscription}</td>
+              <td className="p-2">{u.is_admin ? '✅' : '❌'}</td>
+              <td className="p-2">{new Date(u.created_at).toLocaleDateString()}</td>
+              <td className="p-2 space-x-2">
+                {u.subscription !== 'pro' && (
+                  <button
+                    className="px-2 py-1 bg-blue-600 text-white rounded text-sm"
+                    onClick={() => changePlan(u.id, 'pro')}
+                  >
+                    Set Pro
+                  </button>
+                )}
+                {u.subscription !== 'free' && (
+                  <button
+                    className="px-2 py-1 bg-gray-600 text-white rounded text-sm"
+                    onClick={() => changePlan(u.id, 'free')}
+                  >
+                    Revert to Free
+                  </button>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+3️⃣ Add Admin Route
+In your routing file (e.g. App.jsx):
+
+jsx
+Copy
+Edit
+import AdminPanel from './pages/AdminPanel'
+// ...
+<Routes>
+  {/* ... */}
+  <Route path="/admin" element={<AdminPanel />} />
+</Routes>
+4️⃣ Protect Visibility
+To ensure only admins see the Admin Panel link:
+
+In your sidebar or header navigation:
+
+jsx
+Copy
+Edit
+import { useEffect, useState } from 'react'
+import { supabase } from '../supabaseClient'
+
+export function Sidebar() {
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(() => {
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      if (!user) return
+      const { data: profile } = await supabase
+        .from('user_profiles')
+        .select('is_admin')
+        .eq('id', user.id)
+        .single()
+      setIsAdmin(profile?.is_admin)
+    })
+  }, [])
+
+  return (
+    <nav>
+      {/* ... dashboard, projects links */}
+      {isAdmin && (
+        <Link to="/admin" className="block px-2 py-1 hover:bg-gray-100">Admin Panel</Link>
+      )}
+    </nav>
+  )
+}

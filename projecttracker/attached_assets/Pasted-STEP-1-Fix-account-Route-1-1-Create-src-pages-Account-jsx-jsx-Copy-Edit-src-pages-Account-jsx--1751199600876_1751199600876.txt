@@ -1,0 +1,102 @@
+STEP 1: Fix /account Route
+1.1 Create /src/pages/Account.jsx
+jsx
+Copy
+Edit
+// src/pages/Account.jsx
+import React from 'react';
+
+const Account = () => {
+  return (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">My Account</h1>
+      <p className="text-gray-600">Manage your profile, subscription plan, and preferences.</p>
+    </div>
+  );
+};
+
+export default Account;
+1.2 Update Your Router (in App.jsx or routes.jsx)
+jsx
+Copy
+Edit
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Account from './pages/Account'; // Make sure this is imported
+
+<Routes>
+  {/* other routes */}
+  <Route path="/account" element={<Account />} />
+</Routes>
+🎨 STEP 2: Add Full Footer with VNX Branding
+2.1 Create or Replace /src/components/Footer.jsx
+jsx
+Copy
+Edit
+// src/components/Footer.jsx
+import React from 'react';
+
+const Footer = () => {
+  return (
+    <footer className="text-sm mt-8 border-t py-6 bg-white">
+      <div className="grid md:grid-cols-3 gap-6 px-4 text-center md:text-left">
+        
+        <div>
+          <h4 className="font-bold mb-2">Nexus Tracker</h4>
+          <p className="mb-2 text-gray-600">
+            Simplified project management for solopreneurs and small businesses.
+            Stay organized, get AI assistance, and track your progress efficiently.
+          </p>
+          <div className="flex justify-center md:justify-start space-x-3 text-xl">
+            <a href="https://nexustracker.visnec.ai" aria-label="Home">🏠</a>
+            <a href="https://twitter.com/vnxplatform" aria-label="Twitter">🐦</a>
+            <a href="https://linkedin.com/company/visnec" aria-label="LinkedIn">💼</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="font-bold mb-2">Product</h4>
+          <ul className="space-y-1 text-gray-700">
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/features">Features</a></li>
+            <li><a href="/roadmap">Roadmap</a></li>
+            <li><a href="/docs">API Docs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-bold mb-2">Support</h4>
+          <ul className="space-y-1 text-gray-700">
+            <li><a href="/help">Help Center</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="text-center mt-6 text-gray-500 text-xs">
+        Made with ❤️ by <a href="https://visnec.ai" className="text-blue-600 font-medium">VNX</a><br />
+        © 2025 VNX Company. All rights reserved.
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+2.2 Add <Footer /> to Your Main Layout
+In your App.jsx or main layout component:
+
+jsx
+Copy
+Edit
+import Footer from './components/Footer';
+
+function App() {
+  return (
+    <>
+      <Header />
+      <Routes>...</Routes>
+      <Footer />
+    </>
+  );
+}

@@ -1,0 +1,104 @@
+“I’m building Nexus Tracker — a simplified project/task management tool for SMBs and solopreneurs. I need to separate Free and Paid users in my Supabase + React (Vite + Tailwind) app. Free users can create 2 projects max, no file uploads or teams. Paid users get unlimited access and collaboration. Implement plan-based UI logic, show upgrade prompts, and support Stripe (mock or real). Auth is already set up with Supabase.”
+
+🧱 Step-by-Step Scripts to Implement
+1️⃣ supabaseClient.js (edit or confirm)
+js
+Copy
+Edit
+// src/supabaseClient.js
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+2️⃣ getUserPlan.js (helper to check plan)
+js
+Copy
+Edit
+// src/utils/getUserPlan.js
+import { supabase } from '../supabaseClient'
+
+export const getUserPlan = async () => {
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return 'free'
+
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('plan')
+    .eq('id', user.id)
+    .single()
+
+  return data?.plan || 'free'
+}
+3️⃣ Sample Dashboard.jsx
+jsx
+Copy
+Edit
+// src/pages/Dashboard.jsx
+import React, { useEffect, useState } from 'react'
+import { getUserPlan } from '../utils/getUserPlan'
+
+export default function Dashboard() {
+  const [plan, setPlan] = useState('free')
+
+  useEffect(() => {
+    getUserPlan().then(setPlan)
+  }, [])
+
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-semibold">Dashboard</h2>
+      <p className="text-gray-600 mt-2">You're on the <strong>{plan}</strong> plan</p>
+
+      {plan === 'free' && (
+        <div className="bg-yellow-100 text-yellow-800 p-4 mt-4 rounded">
+          You're on the Free Plan — Limited to 2 projects.{" "}
+          <a href="/upgrade" className="text-blue-600 underline">Upgrade to Pro</a>
+        </div>
+      )}
+    </div>
+  )
+}
+4️⃣ Enforce Project Limits on Create
+In CreateProject.jsx or the page where you allow new project creation:
+
+js
+Copy
+Edit
+const canCreateProject = plan === 'pro' || projects.length < 2
+
+if (!canCreateProject) {
+  alert("You’ve reached the free plan limit. Upgrade to add more projects.")
+  return
+}
+5️⃣ Profile Table (SQL)
+Run this in Supabase SQL Editor:
+
+sql
+Copy
+Edit
+create table if not exists profiles (
+  id uuid primary key references auth.users on delete cascade,
+  full_name text,
+  plan text default 'free',
+  created_at timestamp default now()
+);
+6️⃣ Optional: Upgrade Page (mock)
+jsx
+Copy
+Edit
+// src/pages/Upgrade.jsx
+import React from 'react'
+
+export default function Upgrade() {
+  return (
+    <div className="p-8">
+      <h2 className="text-3xl font-bold mb-4">Upgrade to Pro</h2>
+      <p className="text-lg text-gray-600">Get unlimited projects, team support, and file uploads.</p>
+      <button className="bg-purple-600 text-white px-4 py-2 mt-4 rounded">
+        Upgrade Now (Stripe Coming Soon)
+      </button>
+    </div>
+  )
+}

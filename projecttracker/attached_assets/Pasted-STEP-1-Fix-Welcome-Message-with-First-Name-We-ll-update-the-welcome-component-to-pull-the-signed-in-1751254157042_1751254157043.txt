@@ -1,0 +1,87 @@
+STEP 1: Fix Welcome Message with First Name
+We'll update the welcome component to pull the signed-in user's display_name from the profiles table (linked to their Supabase auth ID).
+
+👇 Add to your welcome component (e.g., WelcomeBanner.jsx)
+jsx
+Copy
+Edit
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+
+export default function WelcomeBanner() {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const fetchName = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (user) {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("display_name")
+          .eq("id", user.id)
+          .single();
+
+        if (!error && data?.display_name) {
+          setName(data.display_name.split(" ")[0]); // use first name
+        }
+      }
+    };
+
+    fetchName();
+  }, []);
+
+  return (
+    <div className="p-4 text-lg font-semibold">
+      <h1>Welcome back{name ? `, ${name}!` : "!"}</h1>
+      <p className="text-sm text-gray-600">Here’s what’s happening with your projects today.</p>
+    </div>
+  );
+}
+✅ STEP 2: Add Feedback for Actions
+We’ll make feedback show briefly using setTimeout. Here’s how to enhance the status messages in your existing components (e.g., ManageProjects.jsx, InviteUser.jsx, AssignRole.jsx).
+
+Update this pattern:
+js
+Copy
+Edit
+setStatus("Project created successfully!");
+To this:
+js
+Copy
+Edit
+setStatus("Project created successfully!");
+setTimeout(() => setStatus(""), 3000);
+Repeat this wherever you display messages to the user.
+
+✅ STEP 3: (Optional) Pagination / Search for Lists
+Would you like to do:
+
+✅ Simple search filter (easy, fast)
+
+⏳ Paginated API call (good for 100+ records, takes longer)
+
+If you want quick search filter, here’s the pattern:
+jsx
+Copy
+Edit
+const [search, setSearch] = useState("");
+
+const filteredProjects = projects.filter(p =>
+  p.name.toLowerCase().includes(search.toLowerCase())
+);
+
+// In JSX:
+<input
+  type="text"
+  placeholder="Search projects"
+  className="border p-2 mb-2 w-full"
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+/>
+
+<ul>
+  {filteredProjects.map(...)}
+</ul>

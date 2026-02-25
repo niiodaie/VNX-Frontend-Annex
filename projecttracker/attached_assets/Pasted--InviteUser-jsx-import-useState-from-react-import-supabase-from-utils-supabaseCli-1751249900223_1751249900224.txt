@@ -1,0 +1,146 @@
+// InviteUser.jsx
+import { useState } from 'react';
+import { supabase } from '../utils/supabaseClient';
+
+export default function InviteUser() {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleInvite = async () => {
+    const { data, error } = await supabase.auth.admin.inviteUserByEmail(email);
+    if (error) {
+      setMessage(`Error: ${error.message}`);
+    } else {
+      setMessage(`Invitation sent to ${email}`);
+      setEmail('');
+    }
+  };
+
+  return (
+    <div className="p-4 border rounded shadow">
+      <h3 className="text-lg font-bold mb-2">Invite User</h3>
+      <input
+        className="border p-2 rounded w-full"
+        type="email"
+        placeholder="user@example.com"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <button onClick={handleInvite} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded">
+        Send Invite
+      </button>
+      {message && <p className="mt-2 text-sm text-gray-700">{message}</p>}
+    </div>
+  );
+}
+
+
+// AssignRole.jsx
+import { useState, useEffect } from 'react';
+import { supabase } from '../utils/supabaseClient';
+
+export default function AssignRole() {
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState('');
+  const [role, setRole] = useState('user');
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const { data, error } = await supabase.from('profiles').select();
+      if (data) setUsers(data);
+    };
+    fetchUsers();
+  }, []);
+
+  const handleAssign = async () => {
+    const { error } = await supabase.from('profiles').update({ role }).eq('id', selectedUser);
+    if (error) {
+      setMessage(`Error: ${error.message}`);
+    } else {
+      setMessage('Role updated successfully');
+    }
+  };
+
+  return (
+    <div className="p-4 border rounded shadow">
+      <h3 className="text-lg font-bold mb-2">Assign Role</h3>
+      <select
+        value={selectedUser}
+        onChange={(e) => setSelectedUser(e.target.value)}
+        className="border p-2 rounded w-full mb-2"
+      >
+        <option value="">Select a user</option>
+        {users.map((user) => (
+          <option key={user.id} value={user.id}>
+            {user.email || user.id}
+          </option>
+        ))}
+      </select>
+      <select
+        value={role}
+        onChange={(e) => setRole(e.target.value)}
+        className="border p-2 rounded w-full mb-2"
+      >
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button onClick={handleAssign} className="bg-green-600 text-white px-4 py-2 rounded">
+        Assign Role
+      </button>
+      {message && <p className="mt-2 text-sm text-gray-700">{message}</p>}
+    </div>
+  );
+}
+
+
+// ManageProjects.jsx
+import { useEffect, useState } from 'react';
+import { supabase } from '../utils/supabaseClient';
+
+export default function ManageProjects() {
+  const [projects, setProjects] = useState([]);
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const { data, error } = await supabase.from('projects').select();
+      if (error) console.error(error);
+      else setProjects(data);
+    };
+    fetchProjects();
+  }, []);
+
+  const handleDelete = async (id) => {
+    const { error } = await supabase.from('projects').delete().eq('id', id);
+    if (error) setMessage(`Error: ${error.message}`);
+    else {
+      setProjects((prev) => prev.filter((p) => p.id !== id));
+      setMessage('Project deleted');
+    }
+  };
+
+  return (
+    <div className="p-4 border rounded shadow">
+      <h3 className="text-lg font-bold mb-4">Manage Projects</h3>
+      {projects.length === 0 ? (
+        <p>No projects found.</p>
+      ) : (
+        <ul>
+          {projects.map((proj) => (
+            <li key={proj.id} className="flex justify-between items-center mb-2">
+              <span>{proj.name}</span>
+              <button
+                onClick={() => handleDelete(proj.id)}
+                className="bg-red-500 text-white px-2 py-1 rounded"
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      {message && <p className="mt-2 text-sm text-gray-700">{message}</p>}
+    </div>
+  );
+}

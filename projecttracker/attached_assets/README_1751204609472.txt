@@ -1,0 +1,9 @@
+Patch Contents:
+- ResetPasswordConfirm.jsx — new page to render /reset-password/confirm
+- Add this route to your router: 
+    { path: "/reset-password/confirm", element: <ResetPasswordConfirm /> }
+
+Usage:
+1. Drop ResetPasswordConfirm.jsx in your pages or views folder.
+2. Update your router config to include the route above.
+3. Deploy to resolve the 404 error on password reset confirmation.
