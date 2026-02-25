@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Paris, France",
+    "image": "https://images.unsplash.com/photo-1502602898536-47ad22581b52?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    "slug": "paris",
+    "description": "The City of Light, famous for its art, culture, fashion, and iconic landmarks like the Eiffel Tower and Louvre Museum.",
+    "continent": "europe",
+    "type": "culture"
+  },
+  {
+    "name": "Tokyo, Japan",
+    "image": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    "slug": "tokyo",
+    "description": "A vibrant metropolis blending traditional culture with cutting-edge technology, offering incredible cuisine and experiences.",
+    "continent": "asia",
+    "type": "culture"
+  },
+  {
+    "name": "Cape Town, South Africa",
+    "image": "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    "slug": "capetown",
+    "description": "Stunning coastal city beneath Table Mountain, known for its wine regions, wildlife, and rich cultural heritage.",
+    "continent": "africa",
+    "type": "nature"
+  },
+  {
+    "name": "Rio de Janeiro, Brazil",
+    "image": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    "slug": "rio",
+    "description": "Famous for Copacabana beach, Christ the Redeemer statue, and vibrant Carnival celebrations.",
+    "continent": "south-america",
+    "type": "culture"
+  },
+  {
+    "name": "New York, USA",
+    "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    "slug": "newyork",
+    "description": "The city that never sleeps, featuring iconic skylines, Broadway shows, world-class museums, and diverse neighborhoods.",
+    "continent": "north-america",
+    "type": "culture"
+  }
+]

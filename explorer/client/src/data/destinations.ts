@@ -1,0 +1,143 @@
+import type { Destination } from "@shared/schema";
+
+export const mockDestinations: Omit<Destination, 'id'>[] = [
+  {
+    name: "Machu Picchu",
+    location: "Cusco, Peru",
+    continent: "south-america",
+    type: "heritage",
+    rating: 4.9,
+    description: "Ancient Incan citadel set high in the Andes Mountains, one of the New Seven Wonders of the World.",
+    imageUrl: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    tags: ["Heritage", "Adventure", "Culture"],
+    featured: true,
+  },
+  {
+    name: "Banff National Park",
+    location: "Alberta, Canada",
+    continent: "north-america",
+    type: "nature",
+    rating: 4.8,
+    description: "Pristine wilderness featuring turquoise lakes, towering peaks, and diverse wildlife in the Canadian Rockies.",
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    tags: ["Nature", "Hiking", "Photography"],
+    featured: true,
+  },
+  {
+    name: "Colosseum",
+    location: "Rome, Italy",
+    continent: "europe",
+    type: "heritage",
+    rating: 4.7,
+    description: "Iconic ancient amphitheater and symbol of Imperial Rome, showcasing remarkable architectural engineering.",
+    imageUrl: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    tags: ["Heritage", "Architecture", "History"],
+    featured: true,
+  },
+  {
+    name: "Kyoto Temples",
+    location: "Kyoto, Japan",
+    continent: "asia",
+    type: "culture",
+    rating: 4.9,
+    description: "Sacred temples surrounded by breathtaking cherry blossoms, embodying Japan's spiritual and natural beauty.",
+    imageUrl: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    tags: ["Culture", "Temples", "Spiritual"],
+    featured: true,
+  },
+  {
+    name: "Victoria Falls",
+    location: "Zambia/Zimbabwe",
+    continent: "africa",
+    type: "nature",
+    rating: 4.8,
+    description: "One of the world's largest waterfalls, creating spectacular rainbows and thundering mist clouds.",
+    imageUrl: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    tags: ["Nature", "Waterfall", "Adventure"],
+    featured: true,
+  },
+  {
+    name: "Northern Lights",
+    location: "Iceland/Norway",
+    continent: "europe",
+    type: "nature",
+    rating: 4.9,
+    description: "Witness the magical Aurora Borealis painting the Arctic sky with ethereal green and purple lights.",
+    imageUrl: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    tags: ["Nature", "Aurora", "Photography"],
+    featured: true,
+  },
+  {
+    name: "Great Barrier Reef",
+    location: "Queensland, Australia",
+    continent: "oceania",
+    type: "nature",
+    rating: 4.8,
+    description: "World's largest coral reef system with incredible marine biodiversity and crystal-clear waters.",
+    imageUrl: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    tags: ["Marine", "Diving", "Conservation"],
+    featured: true,
+  },
+  {
+    name: "Petra",
+    location: "Jordan",
+    continent: "asia",
+    type: "heritage",
+    rating: 4.9,
+    description: "Ancient archaeological site featuring magnificent rock-carved architecture and fascinating Nabataean history.",
+    imageUrl: "https://images.unsplash.com/photo-1548091672-82d1befd48b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    tags: ["Heritage", "Archaeological", "Ancient"],
+    featured: true,
+  },
+];
+
+export const continents = [
+  {
+    id: "asia",
+    name: "Asia",
+    description: "Ancient temples, bustling cities, and diverse cultures spanning from Japan to India",
+    emoji: "🌏",
+    destinationCount: 847,
+    imageUrl: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300"
+  },
+  {
+    id: "europe",
+    name: "Europe",
+    description: "Rich history, architectural marvels, and diverse landscapes from the Mediterranean to the Arctic",
+    emoji: "🏰",
+    destinationCount: 1203,
+    imageUrl: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300"
+  },
+  {
+    id: "africa",
+    name: "Africa",
+    description: "Incredible wildlife, ancient civilizations, and stunning landscapes from deserts to jungles",
+    emoji: "🦁",
+    destinationCount: 562,
+    imageUrl: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300"
+  },
+  {
+    id: "north-america",
+    name: "North America",
+    description: "From national parks to modern cities, diverse landscapes and cultural experiences",
+    emoji: "🗽",
+    destinationCount: 734,
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300"
+  },
+  {
+    id: "south-america",
+    name: "South America",
+    description: "Amazon rainforest, Machu Picchu, tango culture, and breathtaking mountain ranges",
+    emoji: "🏔️",
+    destinationCount: 428,
+    imageUrl: "https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300"
+  },
+  {
+    id: "oceania",
+    name: "Oceania",
+    description: "Pristine beaches, unique wildlife, and indigenous cultures across Pacific islands",
+    emoji: "🏄‍♂️",
+    destinationCount: 312,
+    imageUrl: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300"
+  },
+];
