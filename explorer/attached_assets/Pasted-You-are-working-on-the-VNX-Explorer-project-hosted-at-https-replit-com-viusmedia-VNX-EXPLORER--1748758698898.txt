@@ -1,0 +1,58 @@
+You are working on the VNX-Explorer project hosted at https://replit.com/@viusmedia/VNX-EXPLORER.
+
+Please update the frontend UI (index.html, style.css, and any necessary components) with the following enhancements:
+
+🔹 PURPOSE:
+This platform helps users discover destinations around the world and interact with travel-related tools within the VNX ecosystem.
+
+🔹 TASKS TO IMPLEMENT:
+
+1. 🌍 Create a **clean travel discovery interface** with:
+   - A large **interactive world map or static region-based destination tiles**
+   - For each destination (e.g., Paris, Tokyo, Nairobi), add a destination card with:
+     - Name
+     - Sample image (use public placeholder if none available)
+     - Description
+     - Four buttons (see below)
+
+2. ➕ Add the following buttons for each destination:
+
+   - ✈️ **Track Flights** → opens: `https://flight-tracker-viusmedia.replit.app?destination=paris`
+   - 🗺️ **Add to My Footprint** → opens: `https://travel-footprints-viusmedia.replit.app/add?place=paris`
+   - 🎟️ **Explore Events** → opens: `https://vnx-directory.com/events?city=paris`
+   - 🛒 **Shop Travel Gear** (Affiliate) → opens: `https://www.amazon.com/s?k=travel+gear&tag=yourAffiliateTag`
+
+3. 📱 Make layout mobile responsive, ideally with grid-based structure for destination cards.
+
+4. 🧭 Add a fixed navigation bar at the top with the title:
+   **VNX-Explorer: Discover. Navigate. Experience.**
+
+5. ⚙️ Create a `destinations.json` file (or embed inline) with at least 5 locations to simulate destination data:
+```json
+[
+  {
+    "name": "Paris, France",
+    "image": "https://source.unsplash.com/featured/?paris",
+    "slug": "paris"
+  },
+  {
+    "name": "Tokyo, Japan",
+    "image": "https://source.unsplash.com/featured/?tokyo",
+    "slug": "tokyo"
+  },
+  {
+    "name": "Cape Town, South Africa",
+    "image": "https://source.unsplash.com/featured/?capetown",
+    "slug": "capetown"
+  },
+  {
+    "name": "Rio de Janeiro, Brazil",
+    "image": "https://source.unsplash.com/featured/?rio",
+    "slug": "rio"
+  },
+  {
+    "name": "New York, USA",
+    "image": "https://source.unsplash.com/featured/?newyork",
+    "slug": "newyork"
+  }
+]
