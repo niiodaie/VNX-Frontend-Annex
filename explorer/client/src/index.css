@@ -3,60 +3,55 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222 84% 5%;
-  --muted: 210 40% 98%;
-  --muted-foreground: 215 16% 47%;
+  --background: 210 11% 98%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
   --popover: 0 0% 100%;
-  --popover-foreground: 222 84% 5%;
+  --popover-foreground: 20 14.3% 4.1%;
   --card: 0 0% 100%;
-  --card-foreground: 222 84% 5%;
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --primary: 221 83% 53%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 222 47% 11%;
-  --accent: 210 40% 96%;
-  --accent-foreground: 222 47% 11%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
-  --ring: 221 83% 53%;
-  --radius: 0.75rem;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
   
-  /* VNX-Explorer specific colors */
-  --vnx-blue-50: 239 100% 97%;
-  --vnx-blue-100: 239 100% 93%;
-  --vnx-blue-200: 239 84% 85%;
-  --vnx-blue-300: 239 84% 77%;
-  --vnx-blue-400: 239 86% 68%;
-  --vnx-blue-500: 239 84% 67%;
-  --vnx-blue-600: 221 83% 53%;
-  --vnx-blue-700: 224 76% 48%;
-  --vnx-blue-800: 226 71% 40%;
-  --vnx-blue-900: 224 64% 33%;
+  /* Travel-specific colors */
+  --travel-blue: 213 94% 68%;
+  --nature-green: 158 64% 52%;
+  --accent-red: 0 74% 42%;
+  --warm-orange: 25 95% 53%;
 }
 
 .dark {
-  --background: 222 84% 5%;
-  --foreground: 210 40% 98%;
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 65%;
-  --popover: 222 84% 5%;
-  --popover-foreground: 210 40% 98%;
-  --card: 222 84% 5%;
-  --card-foreground: 210 40% 98%;
-  --border: 217 33% 17%;
-  --input: 217 33% 17%;
-  --primary: 221 83% 53%;
-  --primary-foreground: 222 84% 5%;
-  --secondary: 217 33% 17%;
-  --secondary-foreground: 210 40% 98%;
-  --accent: 217 33% 17%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 63% 31%;
-  --destructive-foreground: 210 40% 98%;
-  --ring: 221 83% 53%;
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
 }
 
 @layer base {
@@ -65,77 +60,40 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply font-sans antialiased bg-background text-foreground;
   }
 }
 
 @layer utilities {
-  .text-vnx-blue-50 { color: hsl(var(--vnx-blue-50)); }
-  .text-vnx-blue-100 { color: hsl(var(--vnx-blue-100)); }
-  .text-vnx-blue-200 { color: hsl(var(--vnx-blue-200)); }
-  .text-vnx-blue-300 { color: hsl(var(--vnx-blue-300)); }
-  .text-vnx-blue-400 { color: hsl(var(--vnx-blue-400)); }
-  .text-vnx-blue-500 { color: hsl(var(--vnx-blue-500)); }
-  .text-vnx-blue-600 { color: hsl(var(--vnx-blue-600)); }
-  .text-vnx-blue-700 { color: hsl(var(--vnx-blue-700)); }
-  .text-vnx-blue-800 { color: hsl(var(--vnx-blue-800)); }
-  .text-vnx-blue-900 { color: hsl(var(--vnx-blue-900)); }
+  .travel-blue {
+    color: hsl(var(--travel-blue));
+  }
   
-  .bg-vnx-blue-50 { background-color: hsl(var(--vnx-blue-50)); }
-  .bg-vnx-blue-100 { background-color: hsl(var(--vnx-blue-100)); }
-  .bg-vnx-blue-200 { background-color: hsl(var(--vnx-blue-200)); }
-  .bg-vnx-blue-300 { background-color: hsl(var(--vnx-blue-300)); }
-  .bg-vnx-blue-400 { background-color: hsl(var(--vnx-blue-400)); }
-  .bg-vnx-blue-500 { background-color: hsl(var(--vnx-blue-500)); }
-  .bg-vnx-blue-600 { background-color: hsl(var(--vnx-blue-600)); }
-  .bg-vnx-blue-700 { background-color: hsl(var(--vnx-blue-700)); }
-  .bg-vnx-blue-800 { background-color: hsl(var(--vnx-blue-800)); }
-  .bg-vnx-blue-900 { background-color: hsl(var(--vnx-blue-900)); }
+  .bg-travel-blue {
+    background-color: hsl(var(--travel-blue));
+  }
   
-  .border-vnx-blue-50 { border-color: hsl(var(--vnx-blue-50)); }
-  .border-vnx-blue-100 { border-color: hsl(var(--vnx-blue-100)); }
-  .border-vnx-blue-200 { border-color: hsl(var(--vnx-blue-200)); }
-  .border-vnx-blue-300 { border-color: hsl(var(--vnx-blue-300)); }
-  .border-vnx-blue-400 { border-color: hsl(var(--vnx-blue-400)); }
-  .border-vnx-blue-500 { border-color: hsl(var(--vnx-blue-500)); }
-  .border-vnx-blue-600 { border-color: hsl(var(--vnx-blue-600)); }
-  .border-vnx-blue-700 { border-color: hsl(var(--vnx-blue-700)); }
-  .border-vnx-blue-800 { border-color: hsl(var(--vnx-blue-800)); }
-  .border-vnx-blue-900 { border-color: hsl(var(--vnx-blue-900)); }
-
-  .hover\:bg-vnx-blue-50:hover { background-color: hsl(var(--vnx-blue-50)); }
-  .hover\:bg-vnx-blue-100:hover { background-color: hsl(var(--vnx-blue-100)); }
-  .hover\:bg-vnx-blue-200:hover { background-color: hsl(var(--vnx-blue-200)); }
-  .hover\:bg-vnx-blue-300:hover { background-color: hsl(var(--vnx-blue-300)); }
-  .hover\:bg-vnx-blue-400:hover { background-color: hsl(var(--vnx-blue-400)); }
-  .hover\:bg-vnx-blue-500:hover { background-color: hsl(var(--vnx-blue-500)); }
-  .hover\:bg-vnx-blue-600:hover { background-color: hsl(var(--vnx-blue-600)); }
-  .hover\:bg-vnx-blue-700:hover { background-color: hsl(var(--vnx-blue-700)); }
-  .hover\:bg-vnx-blue-800:hover { background-color: hsl(var(--vnx-blue-800)); }
-  .hover\:bg-vnx-blue-900:hover { background-color: hsl(var(--vnx-blue-900)); }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .nature-green {
+    color: hsl(var(--nature-green));
   }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  
+  .bg-nature-green {
+    background-color: hsl(var(--nature-green));
   }
-
-  @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+  
+  .accent-red {
+    color: hsl(var(--accent-red));
   }
-
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-in-out;
+  
+  .bg-accent-red {
+    background-color: hsl(var(--accent-red));
   }
-
-  .animate-slide-up {
-    animation: slideUp 0.4s ease-out;
+  
+  .warm-orange {
+    color: hsl(var(--warm-orange));
+  }
+  
+  .bg-warm-orange {
+    background-color: hsl(var(--warm-orange));
   }
 }

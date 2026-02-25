@@ -1,56 +1,25 @@
-import { Button } from "@/components/ui/button";
-import { Compass } from "lucide-react";
-import IntroVideoModal from "@/components/intro-video-modal";
-import { useTranslation } from "@/hooks/useTranslation";
+import { MapPin } from "lucide-react";
 
-interface HeroSectionProps {
-  onExploreClick: () => void;
-}
-
-export default function HeroSection({ onExploreClick }: HeroSectionProps) {
-  const { t } = useTranslation();
-  
+export default function HeroSection() {
   return (
-    <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
-      {/* Background with world map pattern */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')`
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-vnx-blue-900/80 to-vnx-blue-600/70" />
-      
-      {/* Floating decoration elements */}
-      <div className="absolute top-20 left-10 w-16 h-16 bg-white/10 rounded-full animate-pulse hidden lg:block" />
-      <div className="absolute bottom-32 right-16 w-12 h-12 bg-amber-400/20 rounded-full animate-pulse hidden lg:block" />
-      <div className="absolute top-1/3 right-20 w-8 h-8 bg-emerald-400/30 rounded-full animate-pulse hidden lg:block" />
-      
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in">
-          {t('heroTitle')}
-          <span className="text-amber-400 block mt-2">{t('heroSubtitle')}</span>
-        </h1>
-        <p className="text-xl sm:text-2xl text-blue-100 mb-8 max-w-2xl mx-auto">
-          {t('heroDescription')}
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            size="lg"
-            className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
-            onClick={onExploreClick}
-          >
-            <Compass className="w-5 h-5 mr-2" />
-            {t('exploreNow')}
-          </Button>
-          <IntroVideoModal />
+    <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Discover Amazing Places</h1>
+          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+            Explore the world's most scenic destinations and cultural treasures with our interactive travel platform
+          </p>
         </div>
-      </div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse" />
+        
+        {/* Interactive Map Placeholder */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+          <div className="flex items-center justify-center h-96 bg-white/5 rounded-xl border-2 border-dashed border-white/30">
+            <div className="text-center">
+              <MapPin className="mx-auto text-6xl text-white/60 mb-4" />
+              <h3 className="text-2xl font-semibold mb-2">Interactive World Map</h3>
+              <p className="text-white/80">Click on regions to discover amazing destinations</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
