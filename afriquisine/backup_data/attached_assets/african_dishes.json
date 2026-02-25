@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Jollof Rice",
+        "country": "Nigeria",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/6/66/Jollof_Rice_with_Chicken.jpg"
+    },
+    {
+        "name": "Injera with Doro Wat",
+        "country": "Ethiopia",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Injera_with_doro_wat.jpg"
+    },
+    {
+        "name": "Bunny Chow",
+        "country": "South Africa",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/1/10/Bunny_Chow.jpg"
+    },
+    {
+        "name": "Thieboudienne",
+        "country": "Senegal",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Thieboudienne.jpg"
+    },
+    {
+        "name": "Fufu and Egusi Soup",
+        "country": "Nigeria",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Egusi_Soup_with_Fufu.jpg"
+    },
+    {
+        "name": "Matoke",
+        "country": "Uganda",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/d/da/Matoke_dish.jpg"
+    },
+    {
+        "name": "Waakye",
+        "country": "Ghana",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Waakye_%28Ghanaian_dish%29.jpg"
+    },
+    {
+        "name": "Nyama Choma",
+        "country": "Kenya",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/3/30/Nyama_Choma.jpg"
+    }
+]

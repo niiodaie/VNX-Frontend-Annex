@@ -1,0 +1,50 @@
+import React, { useEffect } from 'react';
+import VideoRecipeDemo from '../components/VideoRecipeDemo';
+import EnhancedCulturalStory from '../components/EnhancedCulturalStory';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cuisineImages } from '../utils/assetImports';
+
+const TestPage: React.FC = () => {
+  useEffect(() => {
+    console.log('Cuisine Images:', cuisineImages);
+  }, []);
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8 text-center">New Feature Previews</h1>
+      
+      <Tabs defaultValue="videos" className="w-full mb-10">
+        <TabsList className="grid w-full grid-cols-2 mb-8">
+          <TabsTrigger value="videos">Video Recipe Demonstrations</TabsTrigger>
+          <TabsTrigger value="stories">Enhanced Cultural Stories</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="videos" className="mt-0">
+          <div className="mb-8">
+            <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto text-center">
+              Watch and learn from master chefs as they demonstrate traditional African cooking techniques, 
+              share their knowledge, and reveal the secrets to authentic flavors.
+            </p>
+          </div>
+          
+          <VideoRecipeDemo className="mb-16" videos={[]} />
+        </TabsContent>
+        
+        <TabsContent value="stories" className="mt-0">
+          <div className="mb-8">
+            <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto text-center">
+              Dive deeper into the rich cultural heritage behind African cuisines with our enhanced 
+              cultural stories, featuring chef interviews, historical timelines, and detailed culinary context.
+            </p>
+          </div>
+          
+          <EnhancedCulturalStory dishName="Injera" className="mb-16" />
+          <EnhancedCulturalStory dishName="Jollof Rice" className="mb-16" />
+          <EnhancedCulturalStory dishName="Tagine" className="mb-16" />
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+};
+
+export default TestPage;
