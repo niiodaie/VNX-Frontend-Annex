@@ -1,0 +1,1 @@
+// supabase.js - placeholder content
