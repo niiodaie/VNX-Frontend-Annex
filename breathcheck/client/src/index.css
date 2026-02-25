@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* BreathCheck dark theme */
+    --background: 222 36% 9%; /* #12151E - Carbon Gray */
+    --foreground: 0 0% 94%; /* #F1F1F1 - Fog White */
+    
+    --card: 225 27% 16%; /* #1D2233 - Midnight Blue */
+    --card-foreground: 0 0% 94%; /* #F1F1F1 - Fog White */
+    
+    --popover: 225 27% 16%; /* #1D2233 - Midnight Blue */
+    --popover-foreground: 0 0% 94%; /* #F1F1F1 - Fog White */
+    
+    --primary: 170 100% 42%; /* #00D6B7 - Breath Teal */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 225 27% 16%; /* #1D2233 - Midnight Blue */
+    --secondary-foreground: 0 0% 94%; /* #F1F1F1 - Fog White */
+    
+    --muted: 225 15% 25%;
+    --muted-foreground: 215 16% 65%; /* #9CA3AF - Cool Gray */
+    
+    --accent: 170 100% 42%; /* #00D6B7 - Breath Teal */
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 8 100% 53%; /* #FF3B30 - Crimson Signal */
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 225 15% 20%;
+    --input: 225 15% 20%;
+    --ring: 170 100% 42%; /* #00D6B7 - Breath Teal */
+    
+    --radius: 0.375rem;
+  }
+  
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-carbon text-fogwhite;
+  }
+  
+  /* Override font for the entire app */
+  .font-sans {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  /* Custom utility classes for the breathalyzer app */
+  .bac-safe {
+    @apply text-signalmint;
+  }
+  
+  .bac-warning {
+    @apply text-yellow-400;
+  }
+  
+  .bac-danger {
+    @apply text-crimson;
+  }
+  
+  .bg-safe {
+    @apply bg-signalmint bg-opacity-20;
+  }
+  
+  .bg-warning {
+    @apply bg-yellow-400 bg-opacity-20;
+  }
+  
+  .bg-danger {
+    @apply bg-crimson bg-opacity-20;
+  }
+}
