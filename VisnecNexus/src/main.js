@@ -1,0 +1,146 @@
+import { createElement } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+// Navigation Component
+function Navigation() {
+  return createElement('header', {
+    className: 'fixed top-0 w-full z-50 bg-white/80 backdrop-blur-sm border-b border-slate-200'
+  }, 
+    createElement('nav', { className: 'container mx-auto px-4 sm:px-6 lg:px-8' },
+      createElement('div', { className: 'flex justify-between items-center h-16' },
+        createElement(Link, { to: '/', className: 'flex items-center space-x-2' },
+          createElement('div', { className: 'w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center' },
+            createElement('span', { className: 'text-white font-bold text-sm' }, 'VX')
+          ),
+          createElement('span', { className: 'text-xl font-bold text-slate-800' }, 'VNX')
+        ),
+        createElement('div', { className: 'hidden lg:flex items-center space-x-4' },
+          ['tools', 'platforms', 'directories', 'resources', 'community', 'marketplace', 'insights', 'experiences', 'trends', 'ventures'].map(pillar =>
+            createElement(Link, {
+              key: pillar,
+              to: `/${pillar}`,
+              className: 'text-slate-600 hover:text-purple-600 transition-colors text-sm font-medium'
+            }, pillar.charAt(0).toUpperCase() + pillar.slice(1))
+          )
+        ),
+        createElement('div', { className: 'flex items-center space-x-4' },
+          createElement('button', { className: 'hidden sm:block px-4 py-2 text-slate-600 hover:text-purple-600 transition-colors' }, 'Sign In'),
+          createElement('button', { className: 'px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition-colors' }, 'Get Started')
+        )
+      )
+    )
+  );
+}
+
+// Home Component
+function Home() {
+  const pillars = [
+    { id: 'tools', path: '/tools', icon: '🛠️', title: 'Tools', description: 'Handy utilities that solve real-world problems', gradient: 'from-blue-500 to-cyan-500' },
+    { id: 'platforms', path: '/platforms', icon: '🧩', title: 'Platforms', description: 'Interactive launchpads and service layers', gradient: 'from-green-500 to-emerald-500' },
+    { id: 'directories', path: '/directories', icon: '📚', title: 'Directories', description: 'Discover niche resources by category', gradient: 'from-purple-500 to-violet-500' },
+    { id: 'resources', path: '/resources', icon: '🗂️', title: 'Resources', description: 'Templates, guides, and downloadable kits', gradient: 'from-orange-500 to-red-500' },
+    { id: 'community', path: '/community', icon: '🧑‍🤝‍🧑', title: 'Community', description: 'Peer collaboration and feedback forums', gradient: 'from-pink-500 to-rose-500' },
+    { id: 'marketplace', path: '/marketplace', icon: '🛒', title: 'Marketplace', description: 'Digital products, services, and SaaS tools', gradient: 'from-indigo-500 to-blue-500' },
+    { id: 'insights', path: '/insights', icon: '📈', title: 'Insights', description: 'Trends, forecasts, and business analytics', gradient: 'from-teal-500 to-cyan-500' },
+    { id: 'experiences', path: '/experiences', icon: '✨', title: 'Experiences', description: 'Immersive digital journeys and exploration', gradient: 'from-yellow-500 to-amber-500' },
+    { id: 'trends', path: '/trends', icon: '📊', title: 'Trends', description: 'Real-time market intelligence and emerging patterns', gradient: 'from-violet-500 to-purple-500' },
+    { id: 'ventures', path: '/ventures', icon: '🚀', title: 'Ventures', description: 'Million-dollar startup opportunities and investments', gradient: 'from-rose-500 to-pink-500' }
+  ];
+
+  return createElement('div', { className: 'min-h-screen' },
+    createElement(Navigation),
+    // Hero Section
+    createElement('section', { className: 'relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 flex items-center pt-16' },
+      createElement('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center' },
+        createElement('h1', { className: 'text-6xl md:text-7xl font-black mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent' }, 'The Future of Digital Innovation'),
+        createElement('p', { className: 'text-xl text-gray-300 mb-12 max-w-4xl mx-auto' }, 'Unlock the power of AI-driven tools, cutting-edge platforms, and immersive experiences. Join 50,000+ innovators shaping tomorrow\'s digital landscape.'),
+        createElement('div', { className: 'flex flex-col sm:flex-row justify-center gap-6 mb-16' },
+          createElement('button', { className: 'bg-gradient-to-r from-blue-600 to-blue-700 text-white px-10 py-5 rounded-2xl font-bold text-lg transform hover:scale-105 transition-all' }, 'Explore Tools'),
+          createElement('button', { className: 'bg-white/10 backdrop-blur-sm text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 transform hover:scale-105 transition-all' }, 'Visit Platforms')
+        )
+      )
+    ),
+    // Pillars Section
+    createElement('section', { id: 'pillars', className: 'py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50' },
+      createElement('div', { className: 'container mx-auto px-4 sm:px-6 lg:px-8' },
+        createElement('div', { className: 'text-center mb-16' },
+          createElement('h2', { className: 'text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4' }, '🧱 Explore Our Pillars'),
+          createElement('p', { className: 'text-lg text-slate-600 max-w-3xl mx-auto' }, 'Ten comprehensive categories designed to accelerate your digital journey and unlock new possibilities.')
+        ),
+        createElement('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto' },
+          pillars.map(pillar =>
+            createElement('div', {
+              key: pillar.id,
+              className: 'bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-white/50 group'
+            },
+              createElement('div', { className: 'text-4xl mb-4 group-hover:scale-110 transition-transform duration-300' }, pillar.icon),
+              createElement('h3', { className: 'text-xl font-bold text-slate-800 mb-3' }, pillar.title),
+              createElement('p', { className: 'text-slate-600 mb-6 text-sm leading-relaxed' }, pillar.description),
+              createElement(Link, {
+                to: pillar.path,
+                className: `block w-full px-4 py-2 bg-gradient-to-r ${pillar.gradient} text-white rounded-lg font-medium hover:shadow-lg transition-all duration-300 text-center transform hover:-translate-y-0.5`
+              }, 'Learn More')
+            )
+          )
+        )
+      )
+    )
+  );
+}
+
+// Simple Pillar Page Component
+function PillarPage({ title, description, icon, gradient }) {
+  return createElement('div', { className: `min-h-screen bg-gradient-to-br ${gradient}` },
+    createElement('div', { className: 'bg-white/80 backdrop-blur-sm shadow-sm border-b' },
+      createElement('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6' },
+        createElement('div', { className: 'flex items-center justify-between' },
+          createElement('div', null,
+            createElement('h1', { className: `text-3xl font-bold bg-gradient-to-r ${gradient} bg-clip-text text-transparent` }, `${icon} ${title}`),
+            createElement('p', { className: 'text-gray-600 mt-2' }, description)
+          ),
+          createElement(Link, { to: '/', className: 'text-purple-600 hover:text-purple-800 font-medium' }, '← Back to Home')
+        )
+      )
+    ),
+    createElement('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12' },
+      createElement('div', { className: 'bg-white/60 backdrop-blur-sm rounded-xl p-8 shadow-lg' },
+        createElement('h2', { className: 'text-2xl font-bold mb-4' }, `Welcome to ${title}`),
+        createElement('p', { className: 'text-gray-700 mb-6' }, description),
+        createElement('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-6' },
+          [1, 2, 3].map(i =>
+            createElement('div', {
+              key: i,
+              className: 'bg-white/80 rounded-lg p-6 shadow-md'
+            },
+              createElement('h3', { className: 'font-semibold mb-2' }, `Feature ${i}`),
+              createElement('p', { className: 'text-gray-600 text-sm' }, `Explore amazing features in the ${title.toLowerCase()} section.`)
+            )
+          )
+        )
+      )
+    )
+  );
+}
+
+// App Component
+function App() {
+  return createElement(BrowserRouter, null,
+    createElement(Routes, null,
+      createElement(Route, { path: '/', element: createElement(Home) }),
+      createElement(Route, { path: '/tools', element: createElement(PillarPage, { title: 'Tools', description: 'Handy utilities that solve real-world problems', icon: '🛠️', gradient: 'from-blue-500 to-cyan-500' }) }),
+      createElement(Route, { path: '/platforms', element: createElement(PillarPage, { title: 'Platforms', description: 'Interactive launchpads and service layers', icon: '🧩', gradient: 'from-green-500 to-emerald-500' }) }),
+      createElement(Route, { path: '/directories', element: createElement(PillarPage, { title: 'Directories', description: 'Discover niche resources by category', icon: '📚', gradient: 'from-purple-500 to-violet-500' }) }),
+      createElement(Route, { path: '/resources', element: createElement(PillarPage, { title: 'Resources', description: 'Templates, guides, and downloadable kits', icon: '🗂️', gradient: 'from-orange-500 to-red-500' }) }),
+      createElement(Route, { path: '/community', element: createElement(PillarPage, { title: 'Community', description: 'Peer collaboration and feedback forums', icon: '🧑‍🤝‍🧑', gradient: 'from-pink-500 to-rose-500' }) }),
+      createElement(Route, { path: '/marketplace', element: createElement(PillarPage, { title: 'Marketplace', description: 'Digital products, services, and SaaS tools', icon: '🛒', gradient: 'from-indigo-500 to-blue-500' }) }),
+      createElement(Route, { path: '/insights', element: createElement(PillarPage, { title: 'Insights', description: 'Trends, forecasts, and business analytics', icon: '📈', gradient: 'from-teal-500 to-cyan-500' }) }),
+      createElement(Route, { path: '/experiences', element: createElement(PillarPage, { title: 'Experiences', description: 'Immersive digital journeys and exploration', icon: '✨', gradient: 'from-yellow-500 to-amber-500' }) }),
+      createElement(Route, { path: '/trends', element: createElement(PillarPage, { title: 'Trends', description: 'Real-time market intelligence and emerging patterns', icon: '📊', gradient: 'from-violet-500 to-purple-500' }) }),
+      createElement(Route, { path: '/ventures', element: createElement(PillarPage, { title: 'Ventures', description: 'Million-dollar startup opportunities and investments', icon: '🚀', gradient: 'from-rose-500 to-pink-500' }) })
+    )
+  );
+}
+
+// Initialize the app
+createRoot(document.getElementById('root')).render(createElement(App));
