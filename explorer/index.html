@@ -1,22 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VNX Explorer</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNX Travel Footprints - Track Your Journey</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Meta tags for SEO and social sharing -->
+    <meta name="description" content="Track your travel journey, visualize footprints across the globe, and generate personal travel stats. Part of the Visnec Nexus ecosystem.">
+    <meta name="keywords" content="travel, tracking, footprints, map, analytics, VNX, Visnec Nexus">
+    <meta name="author" content="Visnec Nexus">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="VNX Travel Footprints">
+    <meta property="og:description" content="Track your travel journey and visualize your adventures">
+    <meta property="og:image" content="assets/images/social-preview.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="VNX Travel Footprints">
+    <meta property="twitter:description" content="Track your travel journey and visualize your adventures">
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin=""/>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Leaflet.js JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    
+    <!-- VNX Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/vnx-logo.svg">
 </head>
 <body>
-  <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1607083207084-fd81c17385d6?auto=format&fit=crop&w=1920&q=80');">
-    <div class="overlay">
-      <h1>Discover the World’s <span class="highlight">Hidden Gems</span></h1>
-      <p>Explore natural wonders, historical landmarks, cultural events, and unforgettable local experiences from around the globe.</p>
-      <div class="buttons">
-        <a href="#explore" class="btn-primary">🌍 Explore Now</a>
-        <a href="#journey" class="btn-secondary">🧭 Track My Journey</a>
-        <a href="#flight" class="btn-secondary">✈️ Track My Flight</a>
-      </div>
-    </div>
-  </section>
+    <!-- Hero Map Section -->
+    <section class="hero-map">
+        <div id="hero-map" class="hero-map-container"></div>
+        <div class="hero-overlay">
+            <div class="container hero-content">
+                <h1 class="hero-title">Your Travel Footprints</h1>
+                <p class="hero-subtitle">
+                    Visualize your adventures, analyze your travel patterns, and discover insights about your wanderlust journey across the globe.
+                </p>
+                <div class="hero-actions">
+                    <button id="start-tracking-btn" class="btn btn-primary">Start Tracking</button>
+                    <button id="explore-map-btn" class="btn btn-secondary">Explore Map</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <!-- Logo and Brand -->
+            <a href="#" class="navbar-brand">
+                <img src="assets/icons/vnx-logo.svg" alt="VNX" width="32" height="32">
+                <span>Travel Footprints</span>
+            </a>
+            
+            <!-- Navigation Menu -->
+            <ul class="navbar-nav">
+                <li><a href="#overview" class="nav-link active" data-view="overview">Overview</a></li>
+                <li><a href="#map" class="nav-link" data-view="map">Map</a></li>
+                <li><a href="#timeline" class="nav-link" data-view="timeline">Timeline</a></li>
+                <li><a href="#reports" class="nav-link" data-view="reports">Analytics</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 2rem;">
+        <!-- Overview View -->
+        <section id="overview-view" class="view-content">
+            <!-- Stats Section -->
+            <div class="grid grid-cols-4 gap-lg mb-4">
+                <div class="stat-card">
+                    <div class="stat-number" id="stats-countries">0</div>
+                    <div class="stat-label">Countries Visited</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stats-cities">0</div>
+                    <div class="stat-label">Cities Explored</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stats-distance">0 km</div>
+                    <div class="stat-label">Total Distance</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stats-trips">0</div>
+                    <div class="stat-label">Total Trips</div>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Recent Travel Activity</h3>
+                </div>
+                <div class="card-body">
+                    <div id="recent-trips" class="grid gap-md">
+                        <!-- Recent trips will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Map View -->
+        <section id="map-view" class="view-content hidden">
+            <div class="map-container">
+                <div class="d-flex justify-between align-center mb-3">
+                    <h2>Travel Map</h2>
+                    <div class="text-muted">
+                        <span id="map-trip-count">0 trips</span> displayed
+                    </div>
+                </div>
+                <div id="map"></div>
+            </div>
+        </section>
+        
+        <!-- Timeline View -->
+        <section id="timeline-view" class="view-content hidden">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Travel Timeline</h2>
+                </div>
+                <div class="card-body">
+                    <div id="timeline-content" class="timeline">
+                        <!-- Timeline will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Reports View -->
+        <section id="reports-view" class="view-content hidden">
+            <div class="grid grid-cols-2 gap-lg mb-4">
+                <!-- Weekly Summary Chart -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Weekly Travel Activity</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="weekly-chart" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Monthly Summary Chart -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Monthly Distance Traveled</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="monthly-chart" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Travel Insights -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Travel Insights</h3>
+                </div>
+                <div class="card-body">
+                    <div id="travel-insights" class="grid grid-cols-3 gap-lg">
+                        <!-- Insights will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- VNX Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-section">
+                    <h4>Travel Footprints</h4>
+                    <p>Track your journey, visualize your adventures, and discover insights about your wanderlust. Part of the Visnec Nexus ecosystem.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#map">Interactive Map</a></li>
+                        <li><a href="#timeline">Travel Timeline</a></li>
+                        <li><a href="#reports">Analytics</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Resources -->
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#blog">Travel Blog</a></li>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- VNX Ecosystem -->
+                <div class="footer-section">
+                    <h4>VNX Ecosystem</h4>
+                    <ul>
+                        <li><a href="#vnx-platform">VNX Platform</a></li>
+                        <li><a href="#vnx-apps">Other Apps</a></li>
+                        <li><a href="#vnx-community">Community</a></li>
+                        <li><a href="#vnx-support">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Travel Footprints. Powered by <span class="vnx-brand">Visnec Nexus</span>. Track your journey, explore the world.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- VNX JavaScript -->
+    <script src="js/hero-map.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/chart.js"></script>
+    
+    <!-- Legacy app.js for backward compatibility -->
+    <script src="app.js"></script>
 </body>
 </html>

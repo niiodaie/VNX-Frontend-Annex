@@ -1,0 +1,137 @@
+[
+    {
+        "location": "Paris, France",
+        "date": "2024-01-15",
+        "kmWalked": 12.5
+    },
+    {
+        "location": "London, UK",
+        "date": "2024-01-22",
+        "kmWalked": 8.3
+    },
+    {
+        "location": "Barcelona, Spain",
+        "date": "2024-02-10",
+        "kmWalked": 15.2
+    },
+    {
+        "location": "Rome, Italy",
+        "date": "2024-02-18",
+        "kmWalked": 11.7
+    },
+    {
+        "location": "Amsterdam, Netherlands",
+        "date": "2024-03-05",
+        "kmWalked": 9.4
+    },
+    {
+        "location": "Berlin, Germany",
+        "date": "2024-03-12",
+        "kmWalked": 13.8
+    },
+    {
+        "location": "Prague, Czech Republic",
+        "date": "2024-03-25",
+        "kmWalked": 10.6
+    },
+    {
+        "location": "Vienna, Austria",
+        "date": "2024-04-02",
+        "kmWalked": 7.9
+    },
+    {
+        "location": "Budapest, Hungary",
+        "date": "2024-04-15",
+        "kmWalked": 14.3
+    },
+    {
+        "location": "Copenhagen, Denmark",
+        "date": "2024-04-28",
+        "kmWalked": 6.8
+    },
+    {
+        "location": "Stockholm, Sweden",
+        "date": "2024-05-08",
+        "kmWalked": 12.1
+    },
+    {
+        "location": "Oslo, Norway",
+        "date": "2024-05-20",
+        "kmWalked": 9.7
+    },
+    {
+        "location": "Montreal, Canada",
+        "date": "2024-05-31",
+        "kmWalked": 8.2
+    },
+    {
+        "location": "New York, USA",
+        "date": "2024-06-12",
+        "kmWalked": 16.4
+    },
+    {
+        "location": "Boston, USA",
+        "date": "2024-06-25",
+        "kmWalked": 11.3
+    },
+    {
+        "location": "San Francisco, USA",
+        "date": "2024-07-08",
+        "kmWalked": 18.7
+    },
+    {
+        "location": "Los Angeles, USA",
+        "date": "2024-07-22",
+        "kmWalked": 13.6
+    },
+    {
+        "location": "Tokyo, Japan",
+        "date": "2024-08-05",
+        "kmWalked": 20.3
+    },
+    {
+        "location": "Seoul, South Korea",
+        "date": "2024-08-18",
+        "kmWalked": 15.8
+    },
+    {
+        "location": "Bangkok, Thailand",
+        "date": "2024-09-02",
+        "kmWalked": 12.9
+    },
+    {
+        "location": "Singapore, Singapore",
+        "date": "2024-09-15",
+        "kmWalked": 14.1
+    },
+    {
+        "location": "Sydney, Australia",
+        "date": "2024-10-01",
+        "kmWalked": 17.2
+    },
+    {
+        "location": "Dubai, UAE",
+        "date": "2024-10-18",
+        "kmWalked": 8.9
+    },
+    {
+        "location": "Istanbul, Turkey",
+        "date": "2024-11-05",
+        "kmWalked": 13.4
+    },
+    {
+        "location": "Edinburgh, Scotland",
+        "date": "2024-11-20",
+        "kmWalked": 9.8
+    },
+    {
+        "location": "Reykjavik, Iceland",
+        "date": "2024-12-08",
+        "kmWalked": 6.2
+    },
+    {
+        "location": "Dublin, Ireland",
+        "date": "2024-12-22",
+        "kmWalked": 11.5
+    }
+]

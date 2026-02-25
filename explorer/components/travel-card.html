@@ -1,0 +1,20 @@
+<!-- VNX Travel Footprints - Travel Card Component Template -->
+<div class="travel-card" data-location="{location}" data-date="{date}">
+    <div class="travel-card-header">
+        <div class="travel-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+        </div>
+        <div>
+            <div class="travel-card-title">{location}</div>
+            <div class="travel-card-date">{formattedDate}</div>
+        </div>
+    </div>
+    
+    <div class="travel-card-stats">
+        <span class="travel-distance">{kmWalked} km walked</span>
+        <span class="travel-badge">{tripType}</span>
+    </div>
+</div>

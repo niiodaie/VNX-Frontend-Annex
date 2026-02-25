@@ -1,0 +1,66 @@
+{
+    "app": {
+        "title": "Travel Footprints",
+        "subtitle": "Track your journey, explore the world",
+        "powered_by": "Powered by Visnec Nexus"
+    },
+    "navigation": {
+        "overview": "Overview",
+        "map": "Map",
+        "timeline": "Timeline",
+        "analytics": "Analytics"
+    },
+    "hero": {
+        "title": "Your Travel Footprints",
+        "subtitle": "Visualize your adventures, analyze your travel patterns, and discover insights about your wanderlust journey across the globe.",
+        "start_tracking": "Start Tracking",
+        "explore_map": "Explore Map"
+    },
+    "stats": {
+        "countries_visited": "Countries Visited",
+        "cities_explored": "Cities Explored",
+        "total_distance": "Total Distance",
+        "total_trips": "Total Trips"
+    },
+    "sections": {
+        "recent_activity": "Recent Travel Activity",
+        "travel_map": "Travel Map",
+        "travel_timeline": "Travel Timeline",
+        "weekly_activity": "Weekly Travel Activity",
+        "monthly_distance": "Monthly Distance Traveled",
+        "travel_insights": "Travel Insights"
+    },
+    "placeholders": {
+        "no_trips": "No trips recorded yet",
+        "start_tracking_message": "Start tracking your travels to see them here!",
+        "no_timeline": "No travel timeline available",
+        "timeline_message": "Your travel history will appear here once you have recorded trips.",
+        "map_loading": "Your travel locations will be displayed here"
+    },
+    "footer": {
+        "about": "About",
+        "blog": "Travel Blog",
+        "help": "Help Center",
+        "contact": "Contact",
+        "quick_links": "Quick Links",
+        "resources": "Resources",
+        "vnx_ecosystem": "VNX Ecosystem",
+        "vnx_platform": "VNX Platform",
+        "vnx_apps": "Other Apps",
+        "vnx_community": "Community",
+        "vnx_support": "Support"
+    },
+    "insights": {
+        "most_active_month": "Most Active Month",
+        "average_per_trip": "Average per Trip",
+        "travel_frequency": "Travel Frequency",
+        "distance_walked": "Distance walked per trip",
+        "trips_per_month": "trips per month on average"
+    },
+    "units": {
+        "km": "km",
+        "trips": "trips",
+        "walked": "walked",
+        "traveled": "traveled"
+    }
+}
