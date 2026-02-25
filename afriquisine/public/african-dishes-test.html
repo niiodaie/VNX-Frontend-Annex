@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Dishes - Direct Image Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .dishes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .dish-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .dish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .dish-image-container {
+            position: relative;
+            height: 200px;
+        }
+        .dish-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .dish-title-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 15px;
+        }
+        .dish-title {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+        .dish-country {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .dish-content {
+            padding: 15px;
+        }
+        .dish-description {
+            margin: 0;
+            color: #555;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>African Dishes - Direct Image Test</h1>
+    
+    <div class="dishes-container">
+        <div class="dish-card">
+            <div class="dish-image-container">
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/6/66/Jollof_Rice_with_Chicken.jpg" 
+                    alt="Jollof Rice" 
+                    class="dish-image"
+                    onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Image+Not+Available';"
+                >
+                <div class="dish-title-overlay">
+                    <h2 class="dish-title">Jollof Rice</h2>
+                    <p class="dish-country">Nigeria</p>
+                </div>
+            </div>
+            <div class="dish-content">
+                <p class="dish-description">
+                    Jollof rice is a popular dish in many African countries, typically made with rice, tomatoes, onions and spices.
+                </p>
+            </div>
+        </div>
+        
+        <div class="dish-card">
+            <div class="dish-image-container">
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Bobotie_with_yellow_rice.jpg" 
+                    alt="Bobotie" 
+                    class="dish-image"
+                    onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Image+Not+Available';"
+                >
+                <div class="dish-title-overlay">
+                    <h2 class="dish-title">Bobotie</h2>
+                    <p class="dish-country">South Africa</p>
+                </div>
+            </div>
+            <div class="dish-content">
+                <p class="dish-description">
+                    Bobotie is a savoury pie that originates from South Africa, made with ground beef or lamb mixed with eggs and spices.
+                </p>
+            </div>
+        </div>
+        
+        <div class="dish-card">
+            <div class="dish-image-container">
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/59/Egyptian_food_Kushari.jpg" 
+                    alt="Kushari" 
+                    class="dish-image"
+                    onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Image+Not+Available';"
+                >
+                <div class="dish-title-overlay">
+                    <h2 class="dish-title">Kushari</h2>
+                    <p class="dish-country">Egypt</p>
+                </div>
+            </div>
+            <div class="dish-content">
+                <p class="dish-description">
+                    Kushari is a dish that originates from Egypt made up of rice, macaroni, and lentils, topped with tomato sauce.
+                </p>
+            </div>
+        </div>
+        
+        <div class="dish-card">
+            <div class="dish-image-container">
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Egusi_Soup_with_Fufu.jpg" 
+                    alt="Fufu and Soup" 
+                    class="dish-image"
+                    onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Image+Not+Available';"
+                >
+                <div class="dish-title-overlay">
+                    <h2 class="dish-title">Fufu and Soup</h2>
+                    <p class="dish-country">Ghana</p>
+                </div>
+            </div>
+            <div class="dish-content">
+                <p class="dish-description">
+                    Fufu and soup is one of the most popular dishes in Ghana, made with cassava or yam flour served with various soups.
+                </p>
+            </div>
+        </div>
+        
+        <div class="dish-card">
+            <div class="dish-image-container">
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Bowl_of_chicken_mafe.jpg" 
+                    alt="Mafe" 
+                    class="dish-image"
+                    onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Image+Not+Available';"
+                >
+                <div class="dish-title-overlay">
+                    <h2 class="dish-title">Mafe</h2>
+                    <p class="dish-country">Senegal</p>
+                </div>
+            </div>
+            <div class="dish-content">
+                <p class="dish-description">
+                    Mafe is a Senegalese stew made from lamb, beef, or chicken cooked with peanut sauce and vegetables.
+                </p>
+            </div>
+        </div>
+        
+        <div class="dish-card">
+            <div class="dish-image-container">
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/03/Ethiopian_-_Alicha_1.jpg" 
+                    alt="Doro Wat" 
+                    class="dish-image"
+                    onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Image+Not+Available';"
+                >
+                <div class="dish-title-overlay">
+                    <h2 class="dish-title">Doro Wat</h2>
+                    <p class="dish-country">Ethiopia</p>
+                </div>
+            </div>
+            <div class="dish-content">
+                <p class="dish-description">
+                    Doro wat is a spicy Ethiopian chicken stew with berbere spice, served with injera, a spongy flatbread.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <a href="/" class="back-link">Back to Home</a>
+    
+    <script>
+        // Simple script to check if images are loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.dish-image');
+            let loadedCount = 0;
+            
+            images.forEach(img => {
+                if (img.complete) {
+                    loadedCount++;
+                } else {
+                    img.addEventListener('load', () => {
+                        loadedCount++;
+                        console.log(`Image loaded: ${loadedCount}/${images.length}`);
+                    });
+                    
+                    img.addEventListener('error', () => {
+                        console.error(`Failed to load image: ${img.src}`);
+                    });
+                }
+            });
+            
+            console.log(`Initial loaded images: ${loadedCount}/${images.length}`);
+        });
+    </script>
+</body>
+</html>

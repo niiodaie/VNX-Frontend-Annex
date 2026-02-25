@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Standalone Test Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .dish {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .dish-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .dish-info {
+            padding: 15px;
+        }
+        .dish-name {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #222;
+        }
+        .dish-origin {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .dish-description {
+            margin-bottom: 0;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            text-decoration: none;
+            background-color: #4a5568;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            width: 120px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .back-link:hover {
+            background-color: #2d3748;
+        }
+    </style>
+</head>
+<body>
+    <h1>African Dishes - Standalone Test</h1>
+    
+    <div class="container">
+        <div class="dish">
+            <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/6/66/Jollof_Rice_with_Chicken.jpg" 
+                alt="Jollof Rice with Chicken" 
+                class="dish-image" 
+                onerror="this.onerror=null; this.src='https://via.placeholder.com/800x400?text=Image+Not+Available'; this.nextElementSibling.innerHTML += '<p class=\'error-message\'>Original image failed to load</p>';"
+            >
+            <div class="dish-info">
+                <h2 class="dish-name">Jollof Rice</h2>
+                <p class="dish-origin">Origin: West Africa (Nigeria, Ghana, Senegal)</p>
+                <p class="dish-description">
+                    Jollof rice is a staple dish in many West African countries. It consists of rice cooked in a rich sauce made from tomatoes, peppers, onions, and various spices. Often served with meat or fish, it's a celebratory dish enjoyed at parties and gatherings.
+                </p>
+            </div>
+        </div>
+        
+        <div class="dish">
+            <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Bobotie_with_yellow_rice.jpg" 
+                alt="Bobotie with Yellow Rice" 
+                class="dish-image" 
+                onerror="this.onerror=null; this.src='https://via.placeholder.com/800x400?text=Image+Not+Available'; this.nextElementSibling.innerHTML += '<p class=\'error-message\'>Original image failed to load</p>';"
+            >
+            <div class="dish-info">
+                <h2 class="dish-name">Bobotie</h2>
+                <p class="dish-origin">Origin: South Africa</p>
+                <p class="dish-description">
+                    Bobotie is a well-known South African dish consisting of spiced minced meat baked with an egg-based topping. It combines sweet and savory flavors, featuring ingredients like curry powder, dried fruit, and nuts. It's typically served with yellow rice.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <a href="/" class="back-link">Back to Home</a>
+    
+    <script>
+        // Simple script to log if images load or fail
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.dish-image');
+            
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    console.log('Image loaded successfully:', img.alt);
+                });
+                
+                img.addEventListener('error', function() {
+                    console.log('Image failed to load:', img.alt);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

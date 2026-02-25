@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra Simple Image Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .image-container {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        .image-info {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .back-button {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-button a {
+            background-color: #3b82f6;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .back-button a:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ultra Simple Image Test Page (Pure HTML)</h1>
+    <p>This page is a direct HTML file without any React or JavaScript frameworks, just to test if Wikimedia images load properly.</p>
+    
+    <div class="image-container">
+        <h2>Jollof Rice Test</h2>
+        <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/6/66/Jollof_Rice_with_Chicken.jpg"
+            alt="Jollof Rice with Chicken"
+            onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Image+Not+Available';"
+        />
+        <div class="image-info">
+            <p><strong>Dish:</strong> Jollof Rice</p>
+            <p><strong>Origin:</strong> West Africa</p>
+            <p>Jollof rice is a popular West African dish made with rice, tomatoes, onions, and spices.</p>
+        </div>
+    </div>
+    
+    <div class="image-container">
+        <h2>Bobotie Test</h2>
+        <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Bobotie_with_yellow_rice.jpg"
+            alt="Bobotie with yellow rice"
+            onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=Image+Not+Available';"
+        />
+        <div class="image-info">
+            <p><strong>Dish:</strong> Bobotie</p>
+            <p><strong>Origin:</strong> South Africa</p>
+            <p>Bobotie is a well-known South African dish consisting of spiced minced meat baked with an egg-based topping.</p>
+        </div>
+    </div>
+    
+    <div class="back-button">
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>
