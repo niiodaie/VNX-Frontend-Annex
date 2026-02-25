@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Custom gradient backgrounds */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+/* Add extra radial gradient stops for better control */
+.from-purple-glow {
+  --tw-gradient-from: rgba(139, 92, 246, 0.3);
+  --tw-gradient-to: rgba(0, 0, 0, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DarkNotes Brand Styles */
+@layer components {
+  /* Texture Overlay */
+  .texture-overlay {
+    position: relative;
+  }
+  
+  .texture-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.02' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 10;
+  }
+  
+  /* Purple Glow */
+  .purple-glow {
+    position: relative;
+  }
+  
+  .purple-glow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: 0 0 15px 2px rgba(128, 0, 255, 0.15);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  
+  /* Purple Light Effect */
+  .purple-light-effect {
+    position: relative;
+  }
+  
+  .purple-light-effect::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(128, 0, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+  }
+  
+  /* Slow Pulse Animation */
+  .pulse-slow {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  /* Glitch Text Effect */
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip: rect(0, 0, 0, 0);
+  }
+  
+  .glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00de;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-1 5s linear infinite alternate-reverse;
+  }
+  
+  .glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 #00b3ff;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-2 5s linear infinite alternate-reverse;
+  }
+  
+  @keyframes glitch-anim-1 {
+    0% {
+      clip: rect(31px, 9999px, 94px, 0);
+    }
+    5% {
+      clip: rect(70px, 9999px, 71px, 0);
+    }
+    10% {
+      clip: rect(29px, 9999px, 83px, 0);
+    }
+    15% {
+      clip: rect(8px, 9999px, 11px, 0);
+    }
+    20% {
+      clip: rect(70px, 9999px, 16px, 0);
+    }
+    25% {
+      clip: rect(28px, 9999px, 16px, 0);
+    }
+    30% {
+      clip: rect(54px, 9999px, 64px, 0);
+    }
+    50% {
+      clip: rect(28px, 9999px, 16px, 0);
+    }
+    60% {
+      clip: rect(54px, 9999px, 64px, 0);
+    }
+    100% {
+      clip: rect(54px, 9999px, 16px, 0);
+    }
+  }
+  
+  @keyframes glitch-anim-2 {
+    0% {
+      clip: rect(14px, 9999px, 28px, 0);
+    }
+    5% {
+      clip: rect(64px, 9999px, 72px, 0);
+    }
+    10% {
+      clip: rect(23px, 9999px, 46px, 0);
+    }
+    15% {
+      clip: rect(58px, 9999px, 49px, 0);
+    }
+    20% {
+      clip: rect(10px, 9999px, 78px, 0);
+    }
+    25% {
+      clip: rect(98px, 9999px, 71px, 0);
+    }
+    30% {
+      clip: rect(28px, 9999px, 15px, 0);
+    }
+    50% {
+      clip: rect(98px, 9999px, 71px, 0);
+    }
+    60% {
+      clip: rect(28px, 9999px, 15px, 0);
+    }
+    100% {
+      clip: rect(28px, 9999px, 15px, 0);
+    }
+  }
+  
+  /* Silhouette Filter */
+  .silhouette-filter {
+    filter: contrast(1.2) brightness(0.3);
+    mix-blend-mode: luminosity;
+  }
+}
+
+/* Add custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #332940;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a3a5e;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.6); opacity: 0.4; }
+  50% { transform: scale(1.2); opacity: 0.2; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@layer components {
+  .font-handwriting {
+    font-family: 'Cedarville Cursive', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+  }
+  
+  .font-headline {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.01em;
+  }
+  
+  .font-brand {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.03em;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+  
+  .dramatic-spacing {
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .notebook-bg {
+    background-image: radial-gradient(#ffffff10 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+
+  .mentor-card:hover .mentor-hover {
+    opacity: 1;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .waveform-bar {
+    animation: wave 1.2s ease-in-out infinite;
+  }
+  
+  @keyframes wave {
+    0%, 100% {
+      height: 8px;
+    }
+    50% {
+      height: 25px;
+    }
+  }
+  
+  .silhouette-filter {
+    filter: brightness(10%) contrast(170%) saturate(100%) hue-rotate(-5deg);
+    mix-blend-mode: luminosity;
+    opacity: 0.95;
+  }
+
+  /* Gradient overlay for cards */
+  .card-gradient {
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(18,18,18,1) 100%);
+  }
+
+  /* Purple glow effect */
+  .purple-glow {
+    box-shadow: 0 0 20px 2px rgba(139, 92, 246, 0.35);
+    position: relative;
+  }
+  
+  .purple-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.85rem;
+    box-shadow: 0 0 15px 5px rgba(168, 85, 247, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .hover\:purple-glow:hover::after {
+    opacity: 1;
+  }
+  
+  /* Button styles with glow effects */
+  .btn-glow {
+    border-radius: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #9c44ff, #6a2aad);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .btn-glow:hover::before {
+    opacity: 1;
+  }
+  
+  /* Handwritten note styles */
+  .handwritten-note {
+    position: relative;
+    padding: 1.5rem;
+    background-color: rgba(10, 10, 10, 0.7);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .handwritten-note::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='10' y1='90' x2='90' y2='10' stroke='%23ffffff10' stroke-width='0.5'/%3E%3C/svg%3E");
+    background-size: 30px 30px;
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Waveform visualization */
+  .waveform-visual {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .waveform-visual span {
+    height: 100%;
+    width: 2px;
+    background-color: #9c44ff;
+    border-radius: 1px;
+    animation: waveform-animation 1.5s ease-in-out infinite;
+    opacity: 0.6;
+  }
+  
+  @keyframes waveform-animation {
+    0%, 100% {
+      transform: scaleY(0.3);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+  
+  /* Generate different animation delays for waveform bars */
+  .waveform-visual span:nth-child(2n) {
+    animation-delay: 0.2s;
+  }
+  
+  .waveform-visual span:nth-child(3n) {
+    animation-delay: 0.4s;
+  }
+  
+  .waveform-visual span:nth-child(4n) {
+    animation-delay: 0.6s;
+  }
+
+  /* For mentor profile image */
+  .mentor-profile {
+    position: relative;
+    z-index: 1;
+  }
+
+  .mentor-profile::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(91, 33, 182, 0.2));
+    z-index: -1;
+    border-radius: 8px;
+    filter: blur(2px);
+  }
+
+  .mentor-profile::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background: radial-gradient(circle, 
+                              rgba(79, 70, 229, 0.4) 0%, 
+                              rgba(139, 92, 246, 0.2) 40%,
+                              transparent 70%);
+    z-index: -2;
+    filter: blur(20px);
+    opacity: 0.8;
+  }
+  
+  /* Grungy texture overlay */
+  .texture-overlay {
+    position: relative;
+  }
+  
+  .texture-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 10;
+    mix-blend-mode: overlay;
+  }
+  
+  /* Purple lighting effects */
+  .purple-light-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .purple-light-effect::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      rgba(168, 85, 247, 0.2) 0%,
+      rgba(139, 92, 246, 0.1) 20%,
+      rgba(109, 40, 217, 0.05) 40%,
+      transparent 70%
+    );
+    z-index: 0;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  
+  .purple-light-effect::after {
+    content: '';
+    position: absolute;
+    top: 30%;
+    right: -30%;
+    width: 80%;
+    height: 60%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(139, 92, 246, 0.15) 0%,
+      rgba(91, 33, 182, 0.1) 40%,
+      transparent 80%
+    );
+    z-index: 0;
+    opacity: 0.7;
+    pointer-events: none;
+    filter: blur(40px);
+  }
+
+  /* Pulse animation for AI elements */
+  .pulse-slow {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Chair turning animations for Voice blind auditions */
+  @keyframes chairTurn {
+    0% {
+      transform: perspective(1200px) rotateY(180deg);
+      background-color: rgb(31, 41, 55);
+      border-color: rgb(55, 65, 81);
+    }
+    100% {
+      transform: perspective(1200px) rotateY(0deg);
+      background-color: rgb(17, 24, 39);
+      border-color: rgb(168, 85, 247);
+    }
+  }
+
+  /* Chair styles */
+  .chair-back {
+    transform: perspective(1200px) rotateY(180deg);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  .chair-turned {
+    animation: chairTurn 1s forwards;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  /* Radial gradient for spotlight effect */
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 70%);
+  }
+
+  /* Animated shine effect */
+  @keyframes shine {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shine {
+    animation: shine 3s infinite;
+  }
+}

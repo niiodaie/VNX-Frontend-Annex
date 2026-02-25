@@ -1,0 +1,57 @@
+.purple-player .rhap_container {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.purple-player .rhap_progress-indicator {
+  background: #a855f7;
+}
+
+.purple-player .rhap_progress-filled {
+  background: #a855f7;
+}
+
+.purple-player .rhap_download-progress {
+  background: rgba(168, 85, 247, 0.2);
+}
+
+.purple-player .rhap_button-clear {
+  color: #a855f7;
+}
+
+.purple-player .rhap_time {
+  color: #a855f7;
+}
+
+.purple-player .rhap_volume-indicator {
+  background: #a855f7;
+}
+
+.purple-player .rhap_progress-container:hover .rhap_progress-bar,
+.purple-player .rhap_progress-container:focus .rhap_progress-bar {
+  height: 8px;
+}
+
+.purple-player .rhap_progress-bar {
+  height: 4px;
+}
+
+/* Add subtle glow to play/pause button */
+.purple-player .rhap_main-controls-button {
+  color: #a855f7;
+  filter: drop-shadow(0 0 3px rgba(168, 85, 247, 0.5));
+}
+
+/* Add subtle animation when hovering over controls */
+.purple-player .rhap_controls-section {
+  transition: opacity 0.3s ease;
+}
+
+.purple-player:hover .rhap_controls-section {
+  opacity: 1;
+}
+
+.purple-player .rhap_controls-section {
+  opacity: 0.8;
+}
