@@ -1,0 +1,68 @@
+📌 PROJECT NAME:
+VNX-SearchTrends – AI-Powered Global Search Trend Tracker
+
+🎯 DESCRIPTION:
+Build an AI-powered hourly search trends directory that pulls trending search terms globally and locally, explains them with AI summaries, and organizes them by category. Includes geolocation, language detection, and optional email alerts.
+
+📁 PROJECT STRUCTURE:
+- `/frontend` → Vite + Tailwind UI for clean responsive layout
+- `/backend` → Express server with endpoints for:
+   - `/api/trends` – returns latest search trends
+   - `/api/summarize` – AI summary for a trend
+- `/cron` → Scheduled script to fetch & save new trends hourly
+- `.env` → Secrets for OpenAI, Supabase, Resend
+- `/utils` → Trend categorizer, geolocation helper
+- `db.json` or Supabase DB for storing results
+
+🛠 FEATURES:
+1. ✅ Hourly updated trending searches (via Google Trends API or mock)
+2. ✅ AI summaries of “Why it’s trending” (OpenAI GPT)
+3. ✅ Country & city detection (IP-based geolocation)
+4. ✅ Auto language detection and translation (i18next)
+5. ✅ Category filters (e.g., 🔥 Viral, 📰 News, ⚽ Sports, 💼 Finance, 🎮 Pop Culture)
+6. ✅ Mobile-first UI with dark mode toggle
+7. ✅ Copy to clipboard + shareable trend cards
+8. ✅ Optional email alerts for selected categories (Resend API)
+9. ✅ CRON job to fetch & refresh trend data hourly
+10. ✅ SEO-ready titles and meta for each trend page (if extended)
+
+🧠 AI INTEGRATION:
+- Use `OpenAI GPT-4-turbo` to:
+   - Explain why a trend is spiking
+   - Predict if it will grow or fade
+   - Suggest related content/blog ideas
+
+🌍 LOCALIZATION:
+- Use `i18next` for full language switcher
+- Detect browser language automatically
+- Optional manual override for language & region
+
+💡 EXAMPLE UI SECTIONS:
+- 🔥 **Trending Now**
+- 🧠 **AI Insights**
+- 🌐 **Trending by Country**
+- 📅 **Hourly View / Graph**
+- 📤 **Submit a Trend Idea**
+- 💬 **Why is this trending?** (AI explanation under each keyword)
+
+📦 PACKAGES TO INSTALL:
+- Frontend:
+  - `vite`, `tailwindcss`, `i18next`, `axios`
+- Backend:
+  - `express`, `dotenv`, `openai`, `node-cron`, `cors`, `axios`
+- Optional:
+  - `resend`, `supabase-js`, `moment`, `slugify`
+
+🚀 LAUNCH INSTRUCTIONS:
+1. Upload to Replit
+2. Create `.env` with keys:
+   - `OPENAI_API_KEY`
+   - `SUPABASE_URL`
+   - `SUPABASE_KEY`
+   - `RESEND_API_KEY` *(optional)*
+3. Add `cron.js` script to `replit.nix` or use `cron-job.org`
+4. Deploy and test on `/api/trends` and UI homepage
+
+🌟 MVP GOAL:
+Live, multilingual, mobile-friendly trend tracker that users can visit to see *what’s hot, why it matters, and how to capitalize on it* – every hour.
+
